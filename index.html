@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FishTank — Workflow Intelligence Platform</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --deep:#0F2A4D; --core:#3A86FF; --mid:#5EA3FF; --light:#BFD9FF;
+  --pink:#FF4FA3; --mist:#F4F7FB; --white:#FFFFFF; --ink:#0A0F1E;
+  --slate:#5A6A82; --border:#E2EAF4; --amber:#F59E0B; --green:#0FA86E;
+  --font:'DM Sans','Helvetica Neue',Helvetica,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--mist);color:var(--ink);}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--deep);padding:0 32px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+.tb-left{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.tb-logo{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--core),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:10px;color:#fff;}
+.tb-brand{color:#fff;font-weight:700;font-size:14px;letter-spacing:-0.3px;}
+.tb-sep{color:rgba(255,255,255,0.2);}
+.tb-page{color:var(--light);font-size:13px;opacity:0.6;transition:opacity 0.2s;}
+.tb-back{display:none;align-items:center;gap:6px;color:var(--light);font-size:12px;font-weight:600;cursor:pointer;background:rgba(255,255,255,0.08);padding:5px 12px;border-radius:6px;border:none;transition:background 0.15s;}
+.tb-back:hover{background:rgba(255,255,255,0.14);}
+.tb-badge{background:rgba(58,134,255,0.2);border:1px solid rgba(58,134,255,0.3);color:var(--core);font-size:10px;font-weight:700;letter-spacing:0.08em;padding:3px 10px;border-radius:20px;text-transform:uppercase;}
+
+/* ── PAGES ── */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ══════════════════════════════════
+   HOMEPAGE
+══════════════════════════════════ */
+.home-hero{background:var(--deep);padding:48px 32px 40px;position:relative;overflow:hidden;}
+.home-hero::after{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(58,134,255,0.1) 0%,transparent 70%);pointer-events:none;}
+.home-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--core);margin-bottom:10px;}
+.home-title{font-family:var(--serif);font-size:32px;color:#fff;line-height:1.2;letter-spacing:-0.4px;margin-bottom:10px;}
+.home-title em{color:var(--core);font-style:italic;}
+.home-sub{font-size:13px;color:rgba(191,217,255,0.65);max-width:520px;line-height:1.65;}
+
+.home-stats{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.06);margin-top:32px;}
+.hs{flex:1;padding:16px 20px;border-right:1px solid rgba(255,255,255,0.06);}
+.hs:last-child{border-right:none;}
+.hs-num{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.5px;}
+.hs-num span{color:var(--core);}
+.hs-label{font-size:10px;color:rgba(191,217,255,0.45);margin-top:2px;font-weight:500;}
+
+.home-content{max-width:1100px;margin:0 auto;padding:32px 32px 60px;}
+.home-section-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+
+.wf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+
+.wf-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.15s;text-decoration:none;display:block;}
+.wf-card:hover{box-shadow:0 6px 24px rgba(15,42,77,0.1);transform:translateY(-2px);border-color:var(--core);}
+.wf-card.locked{cursor:default;opacity:0.6;}
+.wf-card.locked:hover{transform:none;box-shadow:none;border-color:var(--border);}
+
+.wf-card-top{background:var(--deep);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;}
+.wf-num{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(191,217,255,0.4);}
+.wf-status{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;}
+.ws-live{background:rgba(15,168,110,0.2);color:var(--green);}
+.ws-soon{background:rgba(90,106,130,0.2);color:var(--slate);}
+
+.wf-card-body{padding:14px 16px 16px;}
+.wf-name{font-size:15px;font-weight:700;color:var(--deep);letter-spacing:-0.2px;margin-bottom:4px;}
+.wf-route{font-size:11px;color:var(--slate);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.wf-arrow{color:var(--core);font-size:10px;}
+
+.wf-meta{display:flex;gap:8px;flex-wrap:wrap;}
+.wf-pill{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--mist);color:var(--slate);}
+.wf-pill.blue{background:rgba(58,134,255,0.1);color:var(--core);}
+.wf-pill.green{background:rgba(15,168,110,0.1);color:var(--green);}
+
+.wf-cta{margin-top:12px;font-size:11px;font-weight:700;color:var(--core);display:flex;align-items:center;gap:4px;}
+.locked .wf-cta{color:var(--slate);}
+
+/* ══════════════════════════════════
+   DEEP DIVE PAGES
+══════════════════════════════════ */
+.dd-hero{background:var(--deep);padding:40px 32px 36px;position:relative;overflow:hidden;}
+.dd-hero::after{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(58,134,255,0.1) 0%,transparent 70%);pointer-events:none;}
+.dd-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--core);margin-bottom:8px;}
+.dd-title{font-family:var(--serif);font-size:28px;color:#fff;line-height:1.2;letter-spacing:-0.4px;margin-bottom:8px;}
+.dd-title em{color:var(--core);font-style:italic;}
+.dd-sub{font-size:13px;color:rgba(191,217,255,0.6);max-width:540px;line-height:1.6;margin-bottom:24px;}
+
+.dd-stats{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.07);padding-top:0;flex-wrap:wrap;}
+.ds{padding:14px 20px;border-right:1px solid rgba(255,255,255,0.07);}
+.ds:last-child{border-right:none;}
+.ds-num{font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.5px;}
+.ds-num span{color:var(--core);}
+.ds-label{font-size:10px;color:rgba(191,217,255,0.4);margin-top:1px;font-weight:500;}
+
+.dd-content{max-width:1060px;margin:0 auto;padding:28px 32px 60px;}
+
+/* SECTION */
+.dd-section{margin-bottom:36px;}
+.dd-sec-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border);}
+.dd-sec-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.si-b{background:rgba(58,134,255,0.1);}
+.si-p{background:rgba(255,79,163,0.1);}
+.si-g{background:rgba(15,168,110,0.1);}
+.si-a{background:rgba(245,158,11,0.1);}
+.si-d{background:rgba(15,42,77,0.07);}
+.dd-sec-title{font-size:16px;font-weight:700;color:var(--deep);letter-spacing:-0.2px;}
+.dd-sec-sub{font-size:11px;color:var(--slate);margin-top:1px;}
+
+/* TOOL TABLE */
+.t-wrap{overflow-x:auto;}
+table.tt{width:100%;border-collapse:collapse;font-size:12px;}
+table.tt th{background:var(--deep);color:rgba(191,217,255,0.6);font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:9px 12px;text-align:left;}
+table.tt th:first-child{border-radius:8px 0 0 0;}
+table.tt th:last-child{border-radius:0 8px 0 0;}
+table.tt td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ink);vertical-align:top;line-height:1.5;}
+table.tt tr:last-child td{border-bottom:none;}
+table.tt tr:nth-child(even) td{background:rgba(244,247,251,0.5);}
+table.tt tr:hover td{background:rgba(58,134,255,0.03);}
+.tn{font-weight:600;color:var(--deep);}
+.tc{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-top:2px;}
+.tc-crm{background:rgba(58,134,255,0.1);color:var(--core);}
+.tc-li{background:rgba(10,102,194,0.1);color:#0A66C2;}
+.tc-seq{background:rgba(255,79,163,0.1);color:var(--pink);}
+.tc-data{background:rgba(245,158,11,0.1);color:var(--amber);}
+.tc-ai{background:rgba(15,42,77,0.1);color:var(--deep);}
+.tc-call{background:rgba(94,163,255,0.1);color:var(--mid);}
+.tc-auto{background:rgba(15,168,110,0.1);color:var(--green);}
+.ap{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;}
+.ap-h{background:rgba(15,168,110,0.12);color:var(--green);}
+.ap-m{background:rgba(245,158,11,0.12);color:var(--amber);}
+.ap-l{background:rgba(90,106,130,0.12);color:var(--slate);}
+
+/* STEPS GRID */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.sc{background:var(--white);border:1.5px solid var(--border);border-radius:10px;overflow:hidden;}
+.sc.risk{border-color:rgba(245,158,11,0.35);}
+.sc.goal{border-color:rgba(15,168,110,0.35);}
+.sc-head{padding:10px 14px;}
+.sc-head.bg-deep{background:var(--deep);}
+.sc-head.bg-green{background:var(--green);}
+.sc-num{font-size:8.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(191,217,255,0.45);margin-bottom:1px;}
+.sc-name{font-size:12.5px;font-weight:700;color:#fff;}
+.sc-body{padding:12px 14px;}
+.sc-desc{font-size:11.5px;color:var(--slate);line-height:1.55;margin-bottom:8px;}
+.sc-label{font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(90,106,130,0.55);margin:8px 0 4px;}
+.sc-list{list-style:none;}
+.sc-list li{font-size:11px;color:var(--ink);padding:2px 0 2px 10px;position:relative;line-height:1.45;}
+.sc-list li::before{content:'·';position:absolute;left:0;color:var(--core);font-weight:700;}
+.sc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.st{font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;}
+.st-a{background:rgba(255,79,163,0.1);color:var(--pink);}
+.st-f{background:rgba(58,134,255,0.1);color:var(--core);}
+.st-r{background:rgba(245,158,11,0.1);color:var(--amber);}
+.st-t{background:rgba(15,168,110,0.1);color:var(--green);}
+.risk-note{background:rgba(245,158,11,0.07);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:6px 9px;margin-top:8px;font-size:10.5px;color:var(--amber);font-weight:600;}
+
+/* AI CARDS */
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.aic{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:16px;position:relative;overflow:hidden;}
+.aic::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.aic.pink::before{background:var(--pink);}
+.aic.blue::before{background:var(--core);}
+.aic.green::before{background:var(--green);}
+.aic.amber::before{background:var(--amber);}
+.aic-label{font-size:8.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;}
+.aic.pink .aic-label{color:var(--pink);}
+.aic.blue .aic-label{color:var(--core);}
+.aic.green .aic-label{color:var(--green);}
+.aic.amber .aic-label{color:var(--amber);}
+.aic-title{font-size:14px;font-weight:700;color:var(--deep);margin-bottom:5px;letter-spacing:-0.2px;}
+.aic-desc{font-size:11.5px;color:var(--slate);line-height:1.6;margin-bottom:10px;}
+.aic-saving{display:inline-flex;align-items:center;gap:5px;background:var(--mist);border-radius:5px;padding:4px 9px;font-size:10.5px;font-weight:700;color:var(--deep);}
+.aic-list{list-style:none;margin-top:8px;}
+.aic-list li{font-size:11px;color:var(--ink);padding:2px 0 2px 12px;position:relative;line-height:1.45;}
+.aic-list li::before{content:'→';position:absolute;left:0;color:var(--core);font-size:9px;}
+
+/* FT OPPS */
+.ft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.ftc{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:16px;}
+.ftc-phase{font-size:8.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+.ftc-title{font-size:13px;font-weight:700;color:var(--deep);margin-bottom:5px;letter-spacing:-0.2px;}
+.ftc-desc{font-size:11.5px;color:var(--slate);line-height:1.6;margin-bottom:10px;}
+.ftc-rev{font-size:10.5px;font-weight:700;color:var(--green);background:rgba(15,168,110,0.08);border-radius:5px;padding:4px 9px;display:inline-block;}
+
+/* PRIORITY TABLE */
+table.pt{width:100%;border-collapse:collapse;}
+table.pt th{background:rgba(15,42,77,0.04);color:var(--slate);font-size:9.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:9px 12px;text-align:left;border-bottom:2px solid var(--border);}
+table.pt td{padding:10px 12px;font-size:12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+table.pt tr:last-child td{border-bottom:none;}
+.pn{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0;}
+.p1{background:var(--deep)}.p2{background:var(--core)}.p3{background:var(--mid)}.p4{background:var(--slate)}.p5{background:#c8d4e4;color:var(--slate);}
+.effort{display:flex;gap:3px;}
+.ed{width:7px;height:7px;border-radius:50%;background:var(--border);}
+.ed.on{background:var(--core)}.ed.hi{background:var(--pink)}.ed.md{background:var(--amber);}
+.rev-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;}
+.rt-s{background:rgba(15,168,110,0.1);color:var(--green);}
+.rt-f{background:rgba(58,134,255,0.1);color:var(--core);}
+.rt-p{background:rgba(255,79,163,0.1);color:var(--pink);}
+
+/* WATCHOUT */
+.wo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.woc{background:var(--white);border:1.5px solid rgba(245,158,11,0.2);border-left:4px solid var(--amber);border-radius:10px;padding:14px 16px;}
+.woc-title{font-size:12.5px;font-weight:700;color:var(--deep);margin-bottom:4px;}
+.woc-desc{font-size:11.5px;color:var(--slate);line-height:1.6;}
+
+/* CALLOUT */
+.callout{background:linear-gradient(135deg,rgba(15,42,77,0.04),rgba(58,134,255,0.05));border:1.5px solid rgba(58,134,255,0.15);border-radius:10px;padding:16px 20px;margin-bottom:20px;}
+.callout b{color:var(--deep);}
+.callout p{font-size:13px;color:var(--slate);line-height:1.7;}
+
+/* COMING SOON */
+.cs-page{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:40px;}
+.cs-badge{background:rgba(90,106,130,0.1);color:var(--slate);font-size:11px;font-weight:700;padding:6px 16px;border-radius:20px;letter-spacing:0.06em;margin-bottom:16px;}
+.cs-title{font-family:var(--serif);font-size:28px;color:var(--deep);margin-bottom:10px;}
+.cs-sub{font-size:13px;color:var(--slate);max-width:400px;line-height:1.65;margin-bottom:24px;}
+.cs-btn{background:var(--deep);color:#fff;font-size:13px;font-weight:600;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;}
+
+/* DIVIDER */
+hr.div{border:none;border-top:1px solid var(--border);margin:0 0 28px;}
+
+/* FOOTER */
+.footer{background:var(--deep);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;}
+.footer p{font-size:11px;color:rgba(191,217,255,0.3);}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     TOPBAR
+═══════════════════════════════════════════ -->
+<div class="topbar">
+  <div class="tb-left" onclick="showPage('home')">
+    <div class="tb-logo">FT</div>
+    <span class="tb-brand">FishTank</span>
+    <span class="tb-sep" id="tb-sep">·</span>
+    <span class="tb-page" id="tb-page">Workflow Intelligence Platform</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="tb-back" id="tb-back" onclick="showPage('home')">← Back to Workflows</button>
+    <div class="tb-badge">Internal · March 2026</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <div class="home-hero">
+    <div class="home-eyebrow">FishTank · AI Transformation for Recruitment</div>
+    <h1 class="home-title">6 Workflows.<br><em>One Intelligence Platform.</em></h1>
+    <p class="home-sub">Deep-dive reference for every core recruitment workflow — tools, AI opportunities, implementation priorities, and FishTank commercial touchpoints.</p>
+    <div class="home-stats">
+      <div class="hs"><div class="hs-num"><span>6</span></div><div class="hs-label">Core workflows mapped</div></div>
+      <div class="hs"><div class="hs-num"><span>32</span></div><div class="hs-label">Total workflow steps</div></div>
+      <div class="hs"><div class="hs-num"><span>£43bn</span></div><div class="hs-label">UK recruitment market</div></div>
+      <div class="hs"><div class="hs-num"><span>30k+</span></div><div class="hs-label">Addressable UK agencies</div></div>
+      <div class="hs"><div class="hs-num"><span>22%</span></div><div class="hs-label">Billable time lost to admin</div></div>
+    </div>
+  </div>
+
+  <div class="home-content">
+    <div class="home-section-label">Workflow Deep Dives</div>
+    <div class="wf-grid">
+
+      <!-- WF 1: BD -->
+      <div class="wf-card" onclick="showPage('bd')">
+        <div class="wf-card-top">
+          <span class="wf-num">Workflow 01</span>
+          <span class="wf-status ws-live">● Live</span>
+        </div>
+        <div class="wf-card-body">
+          <div class="wf-name">Business Development</div>
+          <div class="wf-route">Identify Target <span class="wf-arrow">→</span> Job Spec Acquired</div>
+          <div class="wf-meta">
+            <span class="wf-pill">6 steps</span>
+            <span class="wf-pill blue">Tools mapped</span>
+            <span class="wf-pill green">AI opps</span>
+          </div>
+          <div class="wf-cta">View deep dive →</div>
+        </div>
+      </div>
+
+      <!-- WF 2: Candidate Sourcing -->
+      <div class="wf-card" onclick="showPage('sourcing')">
+        <div class="wf-card-top">
+          <span class="wf-num">Workflow 02</span>
+          <span class="wf-status ws-live">● Live</span>
+        </div>
+        <div class="wf-card-body">
+          <div class="wf-name">Candidate Sourcing</div>
+          <div class="wf-route">Boolean Search <span class="wf-arrow">→</span> Referrals</div>
+          <div class="wf-meta">
+            <span class="wf-pill">6 steps</span>
+            <span class="wf-pill blue">Tools mapped</span>
+            <span class="wf-pill green">AI opps</span>
+          </div>
+          <div class="wf-cta">View deep dive →</div>
+        </div>
+      </div>
+
+      <!-- WF 3: Candidate Mgmt -->
+      <div class="wf-card" onclick="showPage('candmgmt')">
+        <div class="wf-card-top">
+          <span class="wf-num">Workflow 03</span>
+          <span class="wf-status ws-live">● Live</span>
+        </div>
+        <div class="wf-card-body">
+          <div class="wf-name">Candidate Management</div>
+          <div class="wf-route">Screening Calls <span class="wf-arrow">→</span> Offer Accepted</div>
+          <div class="wf-meta">
+            <span class="wf-pill">6 steps</span>
+            <span class="wf-pill blue">Tools mapped</span>
+            <span class="wf-pill green">AI opps</span>
+          </div>
+          <div class="wf-cta">View deep dive →</div>
+        </div>
+      </div>
+
+      <!-- WF 4: Temp & Contracts — COMING SOON -->
+      <!-- ★ ADD DEEP DIVE: Replace 'locked' with onclick="showPage('temp')" and ws-soon with ws-live when ready -->
+      <div class="wf-card locked">
+        <div class="wf-card-top">
+          <span class="wf-num">Workflow 04</span>
+          <span class="wf-status ws-soon">Coming Soon</span>
+        </div>
+        <div class="wf-card-body">
+          <div class="wf-name">Temp &amp; Contracts Ops</div>
+          <div class="wf-route">Compliance <span class="wf-arrow">→</span> Payroll</div>
+          <div class="wf-meta"><span class="wf-pill">6 steps</span></div>
+          <div class="wf-cta">Deep dive in progress</div>
+        </div>
+      </div>
+
+      <!-- WF 5: Client Mgmt — COMING SOON -->
+      <!-- ★ ADD DEEP DIVE: Replace 'locked' with onclick="showPage('clientmgmt')" and ws-soon with ws-live when ready -->
+      <div class="wf-card locked">
+        <div class="wf-card-top">
+          <span class="wf-num">Workflow 05</span>
+          <span class="wf-status ws-soon">Coming Soon</span>
+        </div>
+        <div class="wf-card-body">
+          <div class="wf-name">Client Management</div>
+          <div class="wf-route">Check Ins / Calls <span class="wf-arrow">→</span> Invoice Sent</div>
+          <div class="wf-meta"><span class="wf-pill">6 steps</span></div>
+          <div class="wf-cta">Deep dive in progress</div>
+        </div>
+      </div>
+
+      <!-- WF 6: Internal Ops — COMING SOON -->
+      <!-- ★ ADD DEEP DIVE: Replace 'locked' with onclick="showPage('internalops')" and ws-soon with ws-live when ready -->
+      <div class="wf-card locked">
+        <div class="wf-card-top">
+          <span class="wf-num">Workflow 06</span>
+          <span class="wf-status ws-soon">Coming Soon</span>
+        </div>
+        <div class="wf-card-body">
+          <div class="wf-name">Internal Operations</div>
+          <div class="wf-route">KPIs <span class="wf-arrow">→</span> GDPR</div>
+          <div class="wf-meta"><span class="wf-pill">6 steps</span></div>
+          <div class="wf-cta">Deep dive in progress</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>Internal Reference · Not for distribution</p></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: BUSINESS DEVELOPMENT
+═══════════════════════════════════════════ -->
+<div class="page" id="page-bd">
+  <div class="dd-hero">
+    <div class="dd-eyebrow">Workflow 01 of 06 — Business Development</div>
+    <h1 class="dd-title">Where time is lost — and where <em>AI wins it back</em></h1>
+    <p class="dd-sub">Tools, AI opportunities, implementation priorities and FishTank touchpoints across the full BD workflow.</p>
+    <div class="dd-stats">
+      <div class="ds"><div class="ds-num"><span>2–3%</span></div><div class="ds-label">Cold call conversion (unqualified)</div></div>
+      <div class="ds"><div class="ds-num"><span>18%</span></div><div class="ds-label">Conversion when pre-qualified</div></div>
+      <div class="ds"><div class="ds-num"><span>22%</span></div><div class="ds-label">Billable time lost to admin</div></div>
+      <div class="ds"><div class="ds-num"><span>8×</span></div><div class="ds-label">Avg dials to reach decision-maker</div></div>
+      <div class="ds"><div class="ds-num"><span>37%</span></div><div class="ds-label">Uplift from multi-channel vs single</div></div>
+    </div>
+  </div>
+
+  <div class="dd-content">
+
+    <!-- TOOLS -->
+    <div class="dd-section">
+      <div class="dd-sec-head">
+        <div class="dd-sec-icon si-b">🔧</div>
+        <div><div class="dd-sec-title">Tool Landscape</div><div class="dd-sec-sub">What UK recruiters use for BD — and how well they actually use it</div></div>
+      </div>
+      <div class="t-wrap">
+      <table class="tt">
+        <thead><tr><th>Tool</th><th>Category</th><th>Used For</th><th>Adoption</th><th>FishTank Angle</th></tr></thead>
+        <tbody>
+          <tr><td><div class="tn">Bullhorn CRM</div><div class="tc tc-crm">CRM</div></td><td style="color:var(--slate)">Core BD system</td><td style="color:var(--slate)">Client records, pipeline tracking, BD activity logging</td><td><span class="ap ap-h">Very High</span></td><td style="color:var(--slate)">32/50 FT prospects use it. Most AI output should flow back here.</td></tr>
+          <tr><td><div class="tn">LinkedIn Sales Navigator</div><div class="tc tc-li">LinkedIn</div></td><td style="color:var(--slate)">Prospect ID</td><td style="color:var(--slate)">Advanced search, decision-maker mapping, hiring signal alerts</td><td><span class="ap ap-h">Very High</span></td><td style="color:var(--slate)">Agencies use &lt;30% of features. Big dark value to unlock.</td></tr>
+          <tr><td><div class="tn">Bullhorn Automation</div><div class="tc tc-crm">CRM Automation</div></td><td style="color:var(--slate)">Triggered sequences</td><td style="color:var(--slate)">Automated follow-ups, task creation, pipeline movement</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Severely underused. Most pay for it, don't touch it. Big win.</td></tr>
+          <tr><td><div class="tn">Lemlist</div><div class="tc tc-seq">Sequencing</div></td><td style="color:var(--slate)">Cold outreach</td><td style="color:var(--slate)">AI-personalised email + LinkedIn sequences, 450M contact DB</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Ideal tool to recommend and configure in implementation sprints.</td></tr>
+          <tr><td><div class="tn">Clay</div><div class="tc tc-data">AI Enrichment</div></td><td style="color:var(--slate)">Signal-based prospecting</td><td style="color:var(--slate)">Multi-source enrichment, hiring signals, waterfall contact finding</td><td><span class="ap ap-l">Low — growing</span></td><td style="color:var(--slate)">Most agencies have never heard of it. Massive FishTank opportunity.</td></tr>
+          <tr><td><div class="tn">Kaspr / Apollo.io</div><div class="tc tc-data">Data</div></td><td style="color:var(--slate)">Contact data</td><td style="color:var(--slate)">Email + mobile extraction from LinkedIn, GDPR-compliant EU data</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Critical upstream tool — automation is useless without clean contact data.</td></tr>
+          <tr><td><div class="tn">Fathom / Gong</div><div class="tc tc-call">Call Intel</div></td><td style="color:var(--slate)">Call recording</td><td style="color:var(--slate)">AI transcription, meeting notes, action items → CRM</td><td><span class="ap ap-l">Low</span></td><td style="color:var(--slate)">Easiest, highest-ROI implementation win. Saves ~45 min/day per consultant.</td></tr>
+          <tr><td><div class="tn">ChatGPT / Claude</div><div class="tc tc-ai">Gen AI</div></td><td style="color:var(--slate)">Ad-hoc content</td><td style="color:var(--slate)">Email drafting, research, proposals, call prep</td><td><span class="ap ap-h">High but unstructured</span></td><td style="color:var(--slate)">Used widely without frameworks. FishTank turns ad-hoc into systematic.</td></tr>
+          <tr><td><div class="tn">Make / n8n</div><div class="tc tc-auto">Automation</div></td><td style="color:var(--slate)">Workflow glue</td><td style="color:var(--slate)">Connecting tools, trigger-based workflows, AI orchestration</td><td><span class="ap ap-l">Very Low</span></td><td style="color:var(--slate)">Core FishTank build tool. Almost no agencies use this — where value gets built.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <!-- STEPS -->
+    <div class="dd-section">
+      <div class="dd-sec-head">
+        <div class="dd-sec-icon si-p">⚡</div>
+        <div><div class="dd-sec-title">Step-by-Step AI Opportunities</div><div class="dd-sec-sub">Pain point, AI fix, and key tags at each workflow step</div></div>
+      </div>
+      <div class="steps-grid">
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 01</div><div class="sc-name">Market Research</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Built manually from LinkedIn and memory. Time-consuming, inconsistent, no ICP framework.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Clay: auto-enrich lists with live hiring + funding signals</li><li>GPT: build ICP framework from historical win data</li><li>Sales Nav alerts: auto-surface job change triggers</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-f">🐟 FT Framework</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 02</div><div class="sc-name">Prospect Qualification</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Gut-feel driven. No scoring. Agencies waste time on prospects who will never convert.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT + Clay: auto-score vs ICP before any human time spent</li><li>Waterfall enrichment: email + mobile added to CRM automatically</li><li>GPT: one-page brief per Tier 1 prospect, auto-generated</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Clay + Bullhorn</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 03</div><div class="sc-name">Outreach &amp; Engagement</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Highest friction step. Generic messages, no sequencing, low connect rates.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Lemlist: AI-personalised multi-touch sequences (call → LI → email)</li><li>GPT: hyper-personalised first lines from live prospect research</li><li>AI power dialers: save 4–7hrs/week per consultant</li></ul>
+            <div class="risk-note">⚠ 80% of conversions need 5+ touches. Most agencies stop at 2.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-r">⚠ Risk</span><span class="st st-f">🐟 Prompt Library</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 04</div><div class="sc-name">Discovery Call</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Poor prep, incomplete notes, no follow-up automation. Deals lost here silently.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT + Bullhorn: auto-generated call brief before every meeting</li><li>Fathom: AI transcript + actions pushed to Bullhorn post-call</li><li>Make: trigger follow-up sequence the moment call ends</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Post-call auto</span><span class="st st-t">🔧 Fathom</span><span class="st st-f">🐟 Scripts</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 05</div><div class="sc-name">Proposal &amp; Terms</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Manual proposals, no tracking, stalled deals fall out of view entirely.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT: draft proposal from call transcript + brief in 60 seconds</li><li>Bullhorn Automation: chase sequence if unsigned after 3/5/7 days</li><li>DocuSign + Bullhorn: open tracking pushed back to CRM</li></ul>
+            <div class="risk-note">⚠ Silent killer — no automation here = no visibility on lost deals.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Chase sequences</span><span class="st st-r">⚠ Risk</span><span class="st st-f">🐟 Templates</span></div>
+          </div>
+        </div>
+        <div class="sc goal">
+          <div class="sc-head bg-green"><div class="sc-num">Step 06 · Goal</div><div class="sc-name">Job Spec Acquired</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Even the win is manual — spec lands in email, gets copy-pasted into ATS.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT: parse inbound email spec into structured ATS fields</li><li>AI benchmarking: instant salary range by role + location</li><li>Make: new vacancy → sourcing workflow triggered automatically</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Spec parsing</span><span class="st st-t">🔧 Bullhorn + Make</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <!-- AI OPPS -->
+    <div class="dd-section">
+      <div class="dd-sec-head">
+        <div class="dd-sec-icon si-g">🤖</div>
+        <div><div class="dd-sec-title">Biggest AI Opportunities</div><div class="dd-sec-sub">Ranked by time-saving impact and implementation feasibility</div></div>
+      </div>
+      <div class="ai-grid">
+        <div class="aic green">
+          <div class="aic-label">Intelligence</div>
+          <div class="aic-title">Signal-Based Prospecting (Clay)</div>
+          <div class="aic-desc">Clay aggregates 75+ data sources to auto-identify companies showing hiring signals overnight — scored, enriched, and pushed into Bullhorn before the consultant starts their day.</div>
+          <div class="aic-saving">⏱ 3–5 hrs/consultant/week saved on research</div>
+        </div>
+        <div class="aic pink">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">AI-Personalised Multi-Channel Sequences</div>
+          <div class="aic-desc">LinkedIn → email → call sequences with GPT-written first lines per prospect. Multi-channel outperforms single-channel by 287%. Responses auto-logged in Bullhorn.</div>
+          <div class="aic-saving">📈 3× reply rates vs generic outreach</div>
+        </div>
+        <div class="aic blue">
+          <div class="aic-label">Agentic</div>
+          <div class="aic-title">AI Call Prep + Post-Call Automation</div>
+          <div class="aic-desc">Auto-brief before every call from CRM history + LinkedIn. After: Fathom transcribes, summarises, pushes structured notes + tasks to Bullhorn. Zero manual admin.</div>
+          <div class="aic-saving">⏱ ~45 mins/consultant/day eliminated</div>
+        </div>
+        <div class="aic amber">
+          <div class="aic-label">Content</div>
+          <div class="aic-title">Instant Proposal Generation</div>
+          <div class="aic-desc">GPT drafts full proposal from discovery transcript + job brief + template library in under 60 seconds. DocuSign tracks opens/signs back into Bullhorn automatically.</div>
+          <div class="aic-saving">⏱ 30–60 mins saved per new client proposal</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <!-- PRIORITY TABLE -->
+    <div class="dd-section">
+      <div class="dd-sec-head">
+        <div class="dd-sec-icon si-d">🎯</div>
+        <div><div class="dd-sec-title">Implementation Priority Order</div><div class="dd-sec-sub">Highest ROI first — lowest complexity, fastest visible value</div></div>
+      </div>
+      <table class="pt">
+        <thead><tr><th>#</th><th>What</th><th>Tools</th><th>Client Benefit</th><th>Effort</th><th>Revenue</th></tr></thead>
+        <tbody>
+          <tr><td><div class="pn p1">1</div></td><td style="font-weight:600">Call recording → Bullhorn</td><td style="color:var(--slate);font-size:11px">Fathom + Bullhorn</td><td style="color:var(--slate);font-size:11px">Kills ~45 min/day note admin. Immediate, beloved.</td><td><div class="effort"><div class="ed on"></div><div class="ed"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p2">2</div></td><td style="font-weight:600">AI prompt library for outreach</td><td style="color:var(--slate);font-size:11px">GPT / Claude</td><td style="color:var(--slate);font-size:11px">Better outreach from day 1. No tool setup needed.</td><td><div class="effort"><div class="ed on"></div><div class="ed"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-f">Fluency</span></td></tr>
+          <tr><td><div class="pn p3">3</div></td><td style="font-weight:600">Bullhorn Automation sequences</td><td style="color:var(--slate);font-size:11px">Bullhorn Automation</td><td style="color:var(--slate);font-size:11px">Stop losing deals to forgotten follow-ups.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p4">4</div></td><td style="font-weight:600">ICP scoring + Clay pipeline</td><td style="color:var(--slate);font-size:11px">Clay + Make + Bullhorn</td><td style="color:var(--slate);font-size:11px">Auto-enriched, scored prospect list ready daily.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p5">5</div></td><td style="font-weight:600">Full multi-channel automation</td><td style="color:var(--slate);font-size:11px">Lemlist + LI + Bullhorn + Make</td><td style="color:var(--slate);font-size:11px">AI-written personalised sequences running 24/7.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div></div></td><td><span class="rev-tag rt-p">Sprint + SaaS</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="div">
+
+    <!-- WATCH OUTS -->
+    <div class="dd-section">
+      <div class="dd-sec-head">
+        <div class="dd-sec-icon si-a">⚠</div>
+        <div><div class="dd-sec-title">Watch Outs</div><div class="dd-sec-sub">Risks, ethical considerations and implementation traps</div></div>
+      </div>
+      <div class="wo-grid">
+        <div class="woc"><div class="woc-title">LinkedIn Terms of Service Risk</div><div class="woc-desc">Multi-account automation tools violate LinkedIn's ToS and risk account suspension. FishTank's position: work within LinkedIn's limits intelligently, not at unsafe volume.</div></div>
+        <div class="woc"><div class="woc-title">GDPR on Automated Outreach</div><div class="woc-desc">Automated email to scraped lists requires legitimate interest basis under UK GDPR. FishTank must build compliant templates and ensure clients understand their legal basis.</div></div>
+        <div class="woc"><div class="woc-title">CRM Data Quality Dependency</div><div class="woc-desc">All AI tools are only as good as the CRM data beneath them. Every sprint needs a CRM hygiene phase before automation is layered on top.</div></div>
+        <div class="woc"><div class="woc-title">AI Replacing Human Relationships</div><div class="woc-desc">Recruitment is a relationship business. AI handles the admin — humans own the conversation. Never automate the call itself, only everything around it.</div></div>
+      </div>
+    </div>
+
+    <!-- FT OPPS -->
+    <div class="dd-section">
+      <div class="dd-sec-head">
+        <div class="dd-sec-icon si-p">🐟</div>
+        <div><div class="dd-sec-title">FishTank Commercial Opportunities</div><div class="dd-sec-sub">Where we get paid across this workflow</div></div>
+      </div>
+      <div class="ft-grid">
+        <div class="ftc"><div class="ftc-phase">Fluency Programme</div><div class="ftc-title">AI BD Fluency Module</div><div class="ftc-desc">Prompt engineering for outreach, GPT-assisted research, call prep templates, Bullhorn Automation basics.</div><div class="ftc-rev">Fluency Programme Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">Implementation Sprint</div><div class="ftc-title">BD Automation Sprint</div><div class="ftc-desc">ICP framework, Clay setup, Lemlist/Bullhorn sequences, Fathom integration, proposal generation system.</div><div class="ftc-rev">Implementation Sprint Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">SaaS (Future)</div><div class="ftc-title">BD Intelligence Layer</div><div class="ftc-desc">Proprietary signal dashboard on Bullhorn — hiring alerts, prospect scoring, sequence performance. Licensed monthly.</div><div class="ftc-rev">Monthly SaaS Licence</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>BD Deep Dive · March 2026</p></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CANDIDATE SOURCING
+═══════════════════════════════════════════ -->
+<div class="page" id="page-sourcing">
+  <div class="dd-hero">
+    <div class="dd-eyebrow">Workflow 02 of 06 — Candidate Sourcing</div>
+    <h1 class="dd-title">Finding people faster — <em>and smarter</em></h1>
+    <p class="dd-sub">The sourcing workflow is where AI has the most immediate, measurable impact. Speed to shortlist is a direct revenue driver.</p>
+    <div class="dd-stats">
+      <div class="ds"><div class="ds-num"><span>65%</span></div><div class="ds-label">Recruiters say AI is a game-changer for sourcing</div></div>
+      <div class="ds"><div class="ds-num"><span>30%</span></div><div class="ds-label">Reduction in time-to-submittal with AI tools</div></div>
+      <div class="ds"><div class="ds-num"><span>55%</span></div><div class="ds-label">Faster hiring via referrals vs cold search</div></div>
+      <div class="ds"><div class="ds-num"><span>~£80k</span></div><div class="ds-label">Annual cost of admin waste per 10-person team</div></div>
+    </div>
+  </div>
+  <div class="dd-content">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-b">🔧</div><div><div class="dd-sec-title">Tool Landscape</div><div class="dd-sec-sub">What UK recruiters use for sourcing</div></div></div>
+      <div class="t-wrap">
+      <table class="tt">
+        <thead><tr><th>Tool</th><th>Category</th><th>Used For</th><th>Adoption</th><th>FishTank Angle</th></tr></thead>
+        <tbody>
+          <tr><td><div class="tn">Bullhorn + Textkernel</div><div class="tc tc-crm">ATS / AI Match</div></td><td style="color:var(--slate)">Core sourcing system</td><td style="color:var(--slate)">Semantic candidate matching, skills gap analysis, ATS search</td><td><span class="ap ap-h">Very High</span></td><td style="color:var(--slate)">Textkernel AI matching is underused. Most recruiters still do keyword search.</td></tr>
+          <tr><td><div class="tn">LinkedIn Recruiter</div><div class="tc tc-li">LinkedIn</div></td><td style="color:var(--slate)">Passive candidate outreach</td><td style="color:var(--slate)">InMail campaigns, Boolean search, profile targeting, saved searches</td><td><span class="ap ap-h">Very High</span></td><td style="color:var(--slate)">100–150 InMail/month cap is a hard constraint. AI personalisation makes each one count.</td></tr>
+          <tr><td><div class="tn">Allsorter</div><div class="tc tc-auto">CV Automation</div></td><td style="color:var(--slate)">CV formatting</td><td style="color:var(--slate)">AI CV parsing, branded formatting, Bullhorn/Vincere integration</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">400+ global firms use it. Single-step solution — FishTank maps the whole workflow.</td></tr>
+          <tr><td><div class="tn">hireEZ</div><div class="tc tc-ai">Agentic Sourcing</div></td><td style="color:var(--slate)">AI sourcing agent</td><td style="color:var(--slate)">Auto-sourcing, fake CV detection, structured interviews, scheduling</td><td><span class="ap ap-l">Low — growing</span></td><td style="color:var(--slate)">Top of funnel only. FishTank covers the full workflow hireEZ doesn't touch.</td></tr>
+          <tr><td><div class="tn">Access Vincere Evo</div><div class="tc tc-crm">ATS / CRM</div></td><td style="color:var(--slate)">Non-Bullhorn core system</td><td style="color:var(--slate)">Sourcing, screening, AI content, 200+ feature rollout in 2025–26</td><td><span class="ap ap-h">High</span></td><td style="color:var(--slate)">Second most important integration target. Feature adoption is low — FishTank fixes this.</td></tr>
+          <tr><td><div class="tn">ChatGPT / Claude</div><div class="tc tc-ai">Gen AI</div></td><td style="color:var(--slate)">Boolean + outreach</td><td style="color:var(--slate)">Boolean string generation, InMail copy, candidate summaries</td><td><span class="ap ap-h">High but unstructured</span></td><td style="color:var(--slate)">No prompt frameworks in place. FishTank builds the sourcing prompt library.</td></tr>
+          <tr><td><div class="tn">Make / n8n</div><div class="tc tc-auto">Automation</div></td><td style="color:var(--slate)">Workflow automation</td><td style="color:var(--slate)">GDPR consent workflows, data hygiene, nurture sequences, ATS sync</td><td><span class="ap ap-l">Very Low</span></td><td style="color:var(--slate)">Key tool for GDPR automation and talent pool nurture — almost no agencies use it.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">⚡</div><div><div class="dd-sec-title">Step-by-Step AI Opportunities</div><div class="dd-sec-sub">Pain, fix, and priority tags at each step</div></div></div>
+      <div class="steps-grid">
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 01</div><div class="sc-name">Boolean &amp; Semantic Search</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Manually written Boolean strings are inconsistent and miss candidates. Semantic search features in Bullhorn go largely unused.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT: generate optimised Boolean strings from job brief in seconds</li><li>Bullhorn Textkernel: semantic matching instead of keyword reliance</li><li>AI: suggest alternative job titles and adjacent skills automatically</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-f">🐟 Prompt Library</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 02</div><div class="sc-name">AI-Assisted Shortlisting</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Shortlisting done by reading CVs manually. No scoring, no bias checking, inconsistent criteria applied.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn AI: auto-rank candidates against job brief criteria</li><li>GPT: skills gap analysis — what's missing, what's transferable</li><li>AI bias check: flag gendered or discriminatory language in criteria</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Bullhorn AI</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 03</div><div class="sc-name">Passive Candidate Outreach</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Generic InMails. Low open rates. Recruiter hits InMail limit and has nowhere to go.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT: personalised InMail copy using recent profile activity</li><li>Lemlist: LinkedIn + email sequence for candidates not replying to InMail</li><li>AI: optimal send time prediction per candidate profile</li></ul>
+            <div class="risk-note">⚠ 100–150 InMail/month cap. Every message must count.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Personalise</span><span class="st st-r">⚠ InMail limit</span><span class="st st-f">🐟 Templates</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 04</div><div class="sc-name">CV Gathering &amp; Formatting</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Manual CV reformatting eats hours every day. Inconsistent branding damages client perception.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Allsorter: AI CV parsing + branded formatting in under 60 seconds</li><li>GPT: generate AI candidate summary from CV automatically</li><li>Bullhorn integration: formatted CV + summary pushed direct to record</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Allsorter</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 05</div><div class="sc-name">Talent Pool Management</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Talent pools exist in theory. In practice: stale data, no nurture, GDPR non-compliance.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Make/n8n: automated GDPR consent renewal before data expires</li><li>Bullhorn Automation: nurture sequences keeping pool warm</li><li>AI: flag candidates who've gone quiet — re-engage at right moment</li></ul>
+            <div class="risk-note">⚠ UK GDPR: candidate data expires. No automation = legal exposure.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-r">⚠ GDPR Risk</span><span class="st st-f">🐟 Governance</span></div>
+          </div>
+        </div>
+        <div class="sc goal">
+          <div class="sc-head bg-green"><div class="sc-num">Step 06 · Goal</div><div class="sc-name">Referrals</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Referrals are the highest quality source and mostly ignored. No system to generate them consistently.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn Automation: trigger referral ask at peak satisfaction moment</li><li>GPT: personalised referral request copy per candidate</li><li>Make: referral received → auto-create Bullhorn record + notify consultant</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Bullhorn</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-g">🤖</div><div><div class="dd-sec-title">Biggest AI Opportunities</div></div></div>
+      <div class="ai-grid">
+        <div class="aic blue">
+          <div class="aic-label">Agentic</div>
+          <div class="aic-title">AI-Powered Semantic Search</div>
+          <div class="aic-desc">Replace keyword Boolean with semantic matching via Bullhorn/Textkernel. AI understands context — finds candidates keyword search misses entirely.</div>
+          <div class="aic-saving">⏱ Cuts search time by 50–70% per role</div>
+        </div>
+        <div class="aic pink">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">Passive Outreach at Scale</div>
+          <div class="aic-desc">GPT-personalised InMails + Lemlist email backup sequences. Every candidate gets a message that feels written for them. All within LinkedIn's safe limits.</div>
+          <div class="aic-saving">📈 2–3× reply rates vs generic InMail</div>
+        </div>
+        <div class="aic amber">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">CV Formatting Pipeline</div>
+          <div class="aic-desc">Allsorter + GPT summary generation creates a complete, branded submission pack in under 2 minutes. Currently takes 15–20 minutes manually per candidate.</div>
+          <div class="aic-saving">⏱ 15–20 mins saved per candidate submitted</div>
+        </div>
+        <div class="aic green">
+          <div class="aic-label">Compliance</div>
+          <div class="aic-title">GDPR-Automated Talent Pools</div>
+          <div class="aic-desc">Make/n8n automates consent renewals, data retention, and deletion workflows. Turns the talent pool from a compliance risk into a compliant, warm pipeline asset.</div>
+          <div class="aic-saving">🛡 Eliminates manual GDPR data management</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-d">🎯</div><div><div class="dd-sec-title">Implementation Priority Order</div></div></div>
+      <table class="pt">
+        <thead><tr><th>#</th><th>What</th><th>Tools</th><th>Client Benefit</th><th>Effort</th><th>Revenue</th></tr></thead>
+        <tbody>
+          <tr><td><div class="pn p1">1</div></td><td style="font-weight:600">AI Boolean + prompt library</td><td style="color:var(--slate);font-size:11px">GPT / Claude</td><td style="color:var(--slate);font-size:11px">Better searches immediately. No setup needed.</td><td><div class="effort"><div class="ed on"></div><div class="ed"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-f">Fluency</span></td></tr>
+          <tr><td><div class="pn p2">2</div></td><td style="font-weight:600">Allsorter CV formatting</td><td style="color:var(--slate);font-size:11px">Allsorter + Bullhorn</td><td style="color:var(--slate);font-size:11px">15–20 min per candidate saved. Immediate ROI.</td><td><div class="effort"><div class="ed on"></div><div class="ed on"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p3">3</div></td><td style="font-weight:600">Bullhorn Textkernel semantic matching</td><td style="color:var(--slate);font-size:11px">Bullhorn AI</td><td style="color:var(--slate);font-size:11px">Surface candidates keyword search misses.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p4">4</div></td><td style="font-weight:600">GDPR talent pool automation</td><td style="color:var(--slate);font-size:11px">Make + Bullhorn</td><td style="color:var(--slate);font-size:11px">Compliant warm pool instead of a legal liability.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p5">5</div></td><td style="font-weight:600">Full passive outreach automation</td><td style="color:var(--slate);font-size:11px">Lemlist + LI + Bullhorn</td><td style="color:var(--slate);font-size:11px">Personalised multi-channel candidate engagement at scale.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div></div></td><td><span class="rev-tag rt-p">Sprint + SaaS</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-a">⚠</div><div><div class="dd-sec-title">Watch Outs</div></div></div>
+      <div class="wo-grid">
+        <div class="woc"><div class="woc-title">AI Bias in Shortlisting</div><div class="woc-desc">AI matching trained on historical placement data can perpetuate bias — favouring candidates who look like past successful placements. Every AI shortlist needs a human review layer and a bias governance policy.</div></div>
+        <div class="woc"><div class="woc-title">Fake CV Detection</div><div class="woc-desc">AI-generated CVs are flooding the market in 2026. Agencies need AI tools that detect fabricated credentials (hireEZ, Bullhorn AI) built into the shortlisting step — not an afterthought.</div></div>
+        <div class="woc"><div class="woc-title">GDPR Candidate Data</div><div class="woc-desc">Candidate records in Bullhorn without active consent or legitimate interest are a ticking clock. Sourcing automation that adds new contacts must trigger a consent workflow immediately.</div></div>
+        <div class="woc"><div class="woc-title">CRM Data Decay</div><div class="woc-desc">B2B data decays at 22.5% annually. Candidate data even faster. AI matching against stale records produces garbage. Data hygiene automation is a prerequisite, not an optional extra.</div></div>
+      </div>
+    </div>
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">🐟</div><div><div class="dd-sec-title">FishTank Commercial Opportunities</div></div></div>
+      <div class="ft-grid">
+        <div class="ftc"><div class="ftc-phase">Fluency Programme</div><div class="ftc-title">AI Sourcing Fluency Module</div><div class="ftc-desc">Boolean prompt engineering, AI candidate summaries, semantic search training, bias awareness framework.</div><div class="ftc-rev">Fluency Programme Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">Implementation Sprint</div><div class="ftc-title">Sourcing Automation Sprint</div><div class="ftc-desc">Allsorter setup, Textkernel optimisation, GDPR talent pool automation, passive outreach sequences, referral trigger workflows.</div><div class="ftc-rev">Implementation Sprint Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">SaaS (Future)</div><div class="ftc-title">Talent Pool Intelligence</div><div class="ftc-desc">Automated warm pipeline — consent management, re-engagement signals, candidate scoring dashboard built on Bullhorn data.</div><div class="ftc-rev">Monthly SaaS Licence</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>Candidate Sourcing Deep Dive · March 2026</p></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CANDIDATE MANAGEMENT
+═══════════════════════════════════════════ -->
+<div class="page" id="page-candmgmt">
+  <div class="dd-hero">
+    <div class="dd-eyebrow">Workflow 03 of 06 — Candidate Management</div>
+    <h1 class="dd-title">From first call to offer accepted — <em>without losing anyone</em></h1>
+    <p class="dd-sub">Counter-offer drop-off and poor interview prep are the biggest revenue leaks. AI closes both gaps.</p>
+    <div class="dd-stats">
+      <div class="ds"><div class="ds-num"><span>35%</span></div><div class="ds-label">Recruiter week lost to scheduling admin</div></div>
+      <div class="ds"><div class="ds-num"><span>27%</span></div><div class="ds-label">Higher conversion with structured workflows</div></div>
+      <div class="ds"><div class="ds-num"><span>55%</span></div><div class="ds-label">Faster placements via referral candidates</div></div>
+      <div class="ds"><div class="ds-num"><span>~40%</span></div><div class="ds-label">Of placed candidates receive a counter-offer</div></div>
+    </div>
+  </div>
+  <div class="dd-content">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-b">🔧</div><div><div class="dd-sec-title">Tool Landscape</div><div class="dd-sec-sub">What UK recruiters use in candidate management</div></div></div>
+      <div class="t-wrap">
+      <table class="tt">
+        <thead><tr><th>Tool</th><th>Category</th><th>Used For</th><th>Adoption</th><th>FishTank Angle</th></tr></thead>
+        <tbody>
+          <tr><td><div class="tn">Bullhorn CRM</div><div class="tc tc-crm">ATS</div></td><td style="color:var(--slate)">Core candidate pipeline</td><td style="color:var(--slate)">Submission tracking, interview stages, offer management, placement records</td><td><span class="ap ap-h">Very High</span></td><td style="color:var(--slate)">Most agencies use Bullhorn reactively — AI turns it into a proactive candidate management system.</td></tr>
+          <tr><td><div class="tn">Fathom / Otter.ai</div><div class="tc tc-call">Call Intel</div></td><td style="color:var(--slate)">Screening call recording</td><td style="color:var(--slate)">AI transcription, screening summaries, action items → Bullhorn</td><td><span class="ap ap-l">Low</span></td><td style="color:var(--slate)">Screening calls are the most repetitive task in recruitment. AI notes kill admin here.</td></tr>
+          <tr><td><div class="tn">Allsorter</div><div class="tc tc-auto">CV Automation</div></td><td style="color:var(--slate)">CV submission formatting</td><td style="color:var(--slate)">AI parsing, branded CVs, candidate summaries, ATS integration</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Direct integration with Bullhorn. Saves 15–20 min per candidate per submission.</td></tr>
+          <tr><td><div class="tn">Calendly + Bullhorn</div><div class="tc tc-auto">Scheduling</div></td><td style="color:var(--slate)">Interview scheduling</td><td style="color:var(--slate)">Automated diary coordination, calendar invites, reminders</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">35% of recruiter week is scheduling. Calendly + Bullhorn integration eliminates most of this.</td></tr>
+          <tr><td><div class="tn">ChatGPT / Claude</div><div class="tc tc-ai">Gen AI</div></td><td style="color:var(--slate)">Interview prep + docs</td><td style="color:var(--slate)">Interview prep packs, offer letter drafting, candidate summaries</td><td><span class="ap ap-h">High but unstructured</span></td><td style="color:var(--slate)">Used ad-hoc. FishTank builds templated workflows — same quality output every time.</td></tr>
+          <tr><td><div class="tn">Bullhorn Automation</div><div class="tc tc-crm">CRM Automation</div></td><td style="color:var(--slate)">Post-placement nurture</td><td style="color:var(--slate)">Pre-boarding sequences, check-in triggers, reference chase automation</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Post-offer is where most agencies go dark. Automation keeps candidates warm through notice period.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">⚡</div><div><div class="dd-sec-title">Step-by-Step AI Opportunities</div></div></div>
+      <div class="steps-grid">
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 01</div><div class="sc-name">Screening Calls</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Most repetitive task in recruitment. Same questions, manual notes, inconsistent outcomes across the team.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT: structured screening question framework per role type</li><li>Fathom: AI call recording + summary → Bullhorn automatically</li><li>AI scoring: flag candidates who meet threshold vs those who don't</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate notes</span><span class="st st-f">🐟 Frameworks</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 02</div><div class="sc-name">CV Submission</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Manual formatting, inconsistent summaries, submission emails written from scratch every time.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Allsorter: branded CV in under 60 seconds from raw document</li><li>GPT: AI candidate summary from screening notes + CV</li><li>Bullhorn: one-click submission email from pre-built AI template</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Allsorter</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 03</div><div class="sc-name">Interview Prep &amp; Scheduling</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Diary coordination is a time black hole. Interview prep packs are basic or non-existent.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Calendly + Bullhorn: automated scheduling — no back-and-forth emails</li><li>GPT: full interview prep pack per role (company, culture, likely questions)</li><li>Bullhorn Automation: reminders to candidate + client 24hrs before</li></ul>
+            <div class="risk-note">⚠ 35% of recruiter week disappears into scheduling. Easiest automation win in the workflow.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-r">⚠ Time sink</span><span class="st st-f">🐟 Prep templates</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 04</div><div class="sc-name">Interview Debrief</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Feedback captured inconsistently. Consultants forget to debrief. Candidate sentiment not tracked.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn Automation: trigger debrief capture immediately post-interview</li><li>GPT: structured feedback form → AI sentiment summary</li><li>AI: flag cooling candidates before they drop out quietly</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Trigger automation</span><span class="st st-t">🔧 Bullhorn</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 05</div><div class="sc-name">Offer Management</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Counter-offers kill placements. Most consultants have no structured playbook for handling them.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT: AI-drafted offer letter from template in 30 seconds</li><li>FishTank: counter-offer coaching playbook built into consultant workflow</li><li>AI benchmarking: live salary data to validate offer competitiveness</li></ul>
+            <div class="risk-note">⚠ ~40% of candidates receive counter-offers. No playbook = lost placements.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate docs</span><span class="st st-r">⚠ Counter-offer risk</span><span class="st st-f">🐟 Playbook</span></div>
+          </div>
+        </div>
+        <div class="sc goal">
+          <div class="sc-head bg-green"><div class="sc-num">Step 06 · Goal</div><div class="sc-name">Offer Accepted</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">The win — but most agencies go silent here. Candidate is now vulnerable through the notice period.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn Automation: pre-boarding drip sequence keeping candidate warm</li><li>GPT: personalised check-in messages throughout notice period</li><li>Make: acceptance → reference check trigger → fee trigger in Bullhorn</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Nurture sequence</span><span class="st st-t">🔧 Bullhorn</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-g">🤖</div><div><div class="dd-sec-title">Biggest AI Opportunities</div></div></div>
+      <div class="ai-grid">
+        <div class="aic blue">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">Automated Interview Scheduling</div>
+          <div class="aic-desc">Calendly + Bullhorn integration eliminates the biggest daily time drain in candidate management. Candidate selects a slot, calendar invite goes to both parties, Bullhorn updates automatically.</div>
+          <div class="aic-saving">⏱ Up to 35% of recruiter week reclaimed</div>
+        </div>
+        <div class="aic pink">
+          <div class="aic-label">Content</div>
+          <div class="aic-title">AI Interview Prep Packs</div>
+          <div class="aic-desc">GPT generates a complete candidate brief — company background, culture, likely questions, role context — in under 60 seconds from the job spec and CRM data. Every candidate goes into interview prepared.</div>
+          <div class="aic-saving">⏱ 20–30 mins saved per interview arranged</div>
+        </div>
+        <div class="aic amber">
+          <div class="aic-label">Risk Reduction</div>
+          <div class="aic-title">Counter-Offer Playbook</div>
+          <div class="aic-desc">A structured, AI-assisted coaching playbook for handling counter-offers — built into the consultant's workflow at the offer stage. Consistent approach across the team, not dependent on individual experience.</div>
+          <div class="aic-saving">🛡 Prevents revenue loss from counter-offer drop-off</div>
+        </div>
+        <div class="aic green">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">Pre-Boarding Nurture Sequences</div>
+          <div class="aic-desc">Bullhorn Automation keeps candidates warm between offer and start date — the period when most drop-outs happen. Automated check-ins, relevant content, and consultant touchpoints reduce churn.</div>
+          <div class="aic-saving">📈 Reduces notice period drop-out rate</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-d">🎯</div><div><div class="dd-sec-title">Implementation Priority Order</div></div></div>
+      <table class="pt">
+        <thead><tr><th>#</th><th>What</th><th>Tools</th><th>Client Benefit</th><th>Effort</th><th>Revenue</th></tr></thead>
+        <tbody>
+          <tr><td><div class="pn p1">1</div></td><td style="font-weight:600">Screening call AI notes → Bullhorn</td><td style="color:var(--slate);font-size:11px">Fathom + Bullhorn</td><td style="color:var(--slate);font-size:11px">Kills screening admin. Same win as BD call recording.</td><td><div class="effort"><div class="ed on"></div><div class="ed"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p2">2</div></td><td style="font-weight:600">Interview scheduling automation</td><td style="color:var(--slate);font-size:11px">Calendly + Bullhorn</td><td style="color:var(--slate);font-size:11px">Biggest single time-saving in the workflow.</td><td><div class="effort"><div class="ed on"></div><div class="ed on"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p3">3</div></td><td style="font-weight:600">AI interview prep pack generation</td><td style="color:var(--slate);font-size:11px">GPT + Bullhorn</td><td style="color:var(--slate);font-size:11px">Better candidate performance = more offers = more fees.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-f">Fluency</span></td></tr>
+          <tr><td><div class="pn p4">4</div></td><td style="font-weight:600">Counter-offer playbook</td><td style="color:var(--slate);font-size:11px">FishTank framework</td><td style="color:var(--slate);font-size:11px">Structured handling of the highest-risk moment in the workflow.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-f">Fluency</span></td></tr>
+          <tr><td><div class="pn p5">5</div></td><td style="font-weight:600">Pre-boarding nurture sequences</td><td style="color:var(--slate);font-size:11px">Bullhorn Automation</td><td style="color:var(--slate);font-size:11px">Reduce notice period drop-outs and protect placement fees.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-a">⚠</div><div><div class="dd-sec-title">Watch Outs</div></div></div>
+      <div class="wo-grid">
+        <div class="woc"><div class="woc-title">Counter-Offer Drop-Off</div><div class="woc-desc">~40% of placed candidates receive a counter-offer. Without a structured FishTank-designed playbook in the consultant's workflow, outcomes depend entirely on individual consultant experience.</div></div>
+        <div class="woc"><div class="woc-title">Over-Automating Candidate Comms</div><div class="woc-desc">Candidates can tell when communication is automated. Nurture sequences must feel personal. AI writes the message — the consultant's voice and timing must feel human. Governance needed on tone.</div></div>
+        <div class="woc"><div class="woc-title">GDPR on Screening Recordings</div><div class="woc-desc">Recording screening calls requires candidate consent under UK GDPR. Any call recording implementation must include an explicit consent step — built into the workflow, not an afterthought.</div></div>
+        <div class="woc"><div class="woc-title">AI Bias in Screening</div><div class="woc-desc">AI-assisted screening that scores candidates must be audited for bias. Any scoring criteria built into GPT prompts or Bullhorn AI must be reviewed against protected characteristics under the Equality Act 2010.</div></div>
+      </div>
+    </div>
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">🐟</div><div><div class="dd-sec-title">FishTank Commercial Opportunities</div></div></div>
+      <div class="ft-grid">
+        <div class="ftc"><div class="ftc-phase">Fluency Programme</div><div class="ftc-title">AI Candidate Management Module</div><div class="ftc-desc">AI screening frameworks, interview prep generation, counter-offer playbook, candidate communication tone training.</div><div class="ftc-rev">Fluency Programme Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">Implementation Sprint</div><div class="ftc-title">Candidate Management Sprint</div><div class="ftc-desc">Fathom + Bullhorn setup, Calendly integration, Allsorter configuration, pre-boarding automation sequences, debrief capture workflows.</div><div class="ftc-rev">Implementation Sprint Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">SaaS (Future)</div><div class="ftc-title">Placement Protection Dashboard</div><div class="ftc-desc">AI sentiment tracking across placed candidates — flags cooling signals before drop-out. Built on Bullhorn data, licensed monthly.</div><div class="ftc-rev">Monthly SaaS Licence</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>Candidate Management Deep Dive · March 2026</p></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGES: COMING SOON (WF 4, 5, 6)
+     ★ REPLACE THESE SECTIONS WHEN READY
+═══════════════════════════════════════════ -->
+
+<!-- ★ WORKFLOW 04 — TEMP & CONTRACTS OPS -->
+<div class="page" id="page-temp">
+  <div class="dd-hero"><div class="dd-eyebrow">Workflow 04 of 06 — Temp &amp; Contracts Operations</div><h1 class="dd-title">Deep dive <em>coming soon</em></h1></div>
+  <div class="cs-page"><div class="cs-badge">In Progress</div><div class="cs-title">Temp &amp; Contracts Ops</div><p class="cs-sub">Compliance → Payroll. This deep dive is being built. Check back soon.</p><button class="cs-btn" onclick="showPage('home')">← Back to Workflows</button></div>
+</div>
+
+<!-- ★ WORKFLOW 05 — CLIENT MANAGEMENT -->
+<div class="page" id="page-clientmgmt">
+  <div class="dd-hero"><div class="dd-eyebrow">Workflow 05 of 06 — Client Management</div><h1 class="dd-title">Deep dive <em>coming soon</em></h1></div>
+  <div class="cs-page"><div class="cs-badge">In Progress</div><div class="cs-title">Client Management</div><p class="cs-sub">Check Ins → Invoice Sent. This deep dive is being built. Check back soon.</p><button class="cs-btn" onclick="showPage('home')">← Back to Workflows</button></div>
+</div>
+
+<!-- ★ WORKFLOW 06 — INTERNAL OPS -->
+<div class="page" id="page-internalops">
+  <div class="dd-hero"><div class="dd-eyebrow">Workflow 06 of 06 — Internal Operations</div><h1 class="dd-title">Deep dive <em>coming soon</em></h1></div>
+  <div class="cs-page"><div class="cs-badge">In Progress</div><div class="cs-title">Internal Operations</div><p class="cs-sub">KPIs → GDPR. This deep dive is being built. Check back soon.</p><button class="cs-btn" onclick="showPage('home')">← Back to Workflows</button></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     JS ROUTING
+═══════════════════════════════════════════ -->
+<script>
+  const pageLabels = {
+    home: 'Workflow Intelligence Platform',
+    bd: 'Business Development',
+    sourcing: 'Candidate Sourcing',
+    candmgmt: 'Candidate Management',
+    temp: 'Temp & Contracts Ops',
+    clientmgmt: 'Client Management',
+    internalops: 'Internal Operations'
+  };
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('tb-page').textContent = pageLabels[id] || '';
+    const isHome = id === 'home';
+    document.getElementById('tb-back').style.display = isHome ? 'none' : 'flex';
+    document.getElementById('tb-sep').style.display = isHome ? '' : 'none';
+    document.getElementById('tb-page').style.display = isHome ? '' : 'none';
+    window.scrollTo(0,0);
+  }
+
+  // Initialise
+  showPage('home');
+</script>
+</body>
+</html>
