@@ -225,6 +225,78 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0 0 28px;}
 /* FOOTER */
 .footer{background:var(--deep);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;}
 .footer p{font-size:11px;color:rgba(191,217,255,0.3);}
+
+/* ══════════════════════════════════
+   MARKET INTELLIGENCE
+══════════════════════════════════ */
+.mi-hero{background:var(--deep);padding:40px 32px 36px;position:relative;overflow:hidden;}
+.mi-hero::after{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,79,163,0.08) 0%,transparent 70%);pointer-events:none;}
+.mi-content{max-width:1100px;margin:0 auto;padding:28px 32px 60px;}
+.mi-intro{font-size:13px;color:var(--slate);line-height:1.7;max-width:680px;margin-bottom:28px;}
+
+/* ARCHETYPE GRID */
+.at-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+.at-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow 0.15s;}
+.at-card:hover{box-shadow:0 4px 20px rgba(15,42,77,0.08);}
+
+.at-head{padding:14px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.at-head-left{}
+.at-num{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px;}
+.at-name{font-size:16px;font-weight:700;color:var(--deep);letter-spacing:-0.3px;margin-bottom:3px;}
+.at-desc{font-size:11px;color:var(--slate);line-height:1.5;}
+.at-hook{background:var(--mist);border-radius:8px;padding:8px 12px;font-size:11px;font-style:italic;color:var(--deep);font-weight:600;margin:0 18px 0;line-height:1.5;}
+.at-hook.tbc{color:var(--slate);background:rgba(90,106,130,0.06);border:1px dashed var(--border);}
+.at-hook-label{font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin-bottom:4px;font-style:normal;}
+
+/* OPPORTUNITY TABLE */
+.at-table-wrap{padding:14px 18px;}
+.at-table-label{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;}
+table.at{width:100%;border-collapse:collapse;font-size:11.5px;}
+table.at th{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(90,106,130,0.6);padding:0 10px 6px;text-align:left;border-bottom:1px solid var(--border);}
+table.at th.center{text-align:center;}
+table.at td{padding:8px 10px;border-bottom:1px solid rgba(226,234,244,0.5);vertical-align:middle;line-height:1.4;}
+table.at tr:last-child td{border-bottom:none;}
+table.at tr:hover td{background:rgba(58,134,255,0.02);}
+.at-rank{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;}
+.r1{background:var(--deep)}.r2{background:var(--core)}.r3{background:var(--mid)}.r4{background:var(--slate)}.r5{background:#c0cedf;color:var(--slate)}.r6{background:#e2eaf4;color:var(--slate)}
+.at-wf{font-weight:600;color:var(--deep);}
+.at-ft{font-size:11px;color:var(--slate);}
+.stars{display:flex;gap:2px;justify-content:center;}
+.star{width:8px;height:8px;border-radius:50%;}
+.star.on{background:var(--core);}
+.star.hi{background:var(--pink);}
+.star.off{background:var(--border);}
+.na-cell{font-size:10px;color:var(--border);text-align:center;}
+
+/* PATHWAY */
+.at-pathway{display:flex;gap:0;border-top:1px solid var(--border);margin:0 18px;padding:12px 0;}
+.at-path-step{flex:1;padding:0 10px;border-right:1px solid var(--border);}
+.at-path-step:last-child{border-right:none;}
+.at-path-label{font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;}
+.at-path-label.entry{color:var(--core);}
+.at-path-label.sprint{color:var(--green);}
+.at-path-label.saas{color:var(--pink);}
+.at-path-text{font-size:11px;color:var(--slate);line-height:1.5;}
+
+/* CHARS */
+.at-chars{display:flex;flex-wrap:wrap;gap:5px;padding:0 18px 14px;}
+.at-char{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--mist);color:var(--slate);}
+
+/* CONFIDENCE */
+.conf-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;}
+.conf-v{background:rgba(15,168,110,0.1);color:var(--green);}
+.conf-r{background:rgba(245,158,11,0.1);color:var(--amber);}
+
+/* LEGEND */
+.mi-legend{display:flex;gap:20px;flex-wrap:wrap;background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:22px;align-items:center;}
+.mi-legend-title{font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin-right:4px;}
+.ml-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--slate);}
+.ml-dots{display:flex;gap:2px;}
+.ml-d{width:7px;height:7px;border-radius:50%;}
+.ml-d.on{background:var(--core);}
+.ml-d.off{background:var(--border);}
+.ml-d.hi{background:var(--pink);}
 </style>
 </head>
 <body>
@@ -368,6 +440,41 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0 0 28px;}
       </div>
 
     </div>
+
+    <div style="margin-top:32px;">
+      <div class="home-section-label">Market Intelligence</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px;">
+        <div class="wf-card" onclick="showPage('market')">
+          <div class="wf-card-top">
+            <span class="wf-num">Market Intelligence · 01</span>
+            <span class="wf-status ws-live">● Live</span>
+          </div>
+          <div class="wf-card-body">
+            <div class="wf-name">UK Recruitment Agency Archetypes</div>
+            <div class="wf-route">6 archetypes <span class="wf-arrow">→</span> All workflows ranked <span class="wf-arrow">→</span> FishTank engagement pathway</div>
+            <div class="wf-meta">
+              <span class="wf-pill">6 archetypes</span>
+              <span class="wf-pill blue">Ranked opportunity maps</span>
+              <span class="wf-pill green">Sales hooks</span>
+            </div>
+            <div class="wf-cta">View market map →</div>
+          </div>
+        </div>
+        <div class="wf-card locked">
+          <div class="wf-card-top">
+            <span class="wf-num">Market Intelligence · 02</span>
+            <span class="wf-status ws-soon">Coming Soon</span>
+          </div>
+          <div class="wf-card-body">
+            <div class="wf-name">Competitor Intelligence</div>
+            <div class="wf-route">Agencies <span class="wf-arrow">→</span> Tools <span class="wf-arrow">→</span> FishTank positioning</div>
+            <div class="wf-meta"><span class="wf-pill">Being built</span></div>
+            <div class="wf-cta">Coming soon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>Internal Reference · Not for distribution</p></div>
@@ -945,6 +1052,307 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0 0 28px;}
 
 
 <!-- ═══════════════════════════════════════════
+     PAGE: MARKET INTELLIGENCE
+═══════════════════════════════════════════ -->
+<div class="page" id="page-market">
+  <div class="mi-hero">
+    <div class="dd-eyebrow">Market Intelligence · UK Recruitment</div>
+    <h1 class="dd-title">6 Agency Archetypes.<br><em>Every automation opportunity ranked.</em></h1>
+    <p class="dd-sub">Understanding who we're selling to is as important as what we're selling. Each archetype has a different primary pain, a different entry point, and a different commercial ceiling for FishTank.</p>
+    <div class="dd-stats">
+      <div class="ds"><div class="ds-num"><span>31,345</span></div><div class="ds-label">UK recruitment enterprises (2025)</div></div>
+      <div class="ds"><div class="ds-num"><span>64/36</span></div><div class="ds-label">Typical temp/perm split at SME agencies</div></div>
+      <div class="ds"><div class="ds-num"><span>£43bn</span></div><div class="ds-label">UK recruitment market value</div></div>
+      <div class="ds"><div class="ds-num"><span>42%</span></div><div class="ds-label">Agencies constrained by cashflow in 2024</div></div>
+    </div>
+  </div>
+
+  <div class="mi-content">
+
+    <!-- LEGEND -->
+    <div class="mi-legend">
+      <span class="mi-legend-title">How to read the rankings:</span>
+      <div class="ml-item"><div class="ml-dots"><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d on"></div></div> Very High</div>
+      <div class="ml-item"><div class="ml-dots"><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d off"></div></div> High</div>
+      <div class="ml-item"><div class="ml-dots"><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d off"></div><div class="ml-d off"></div></div> Medium</div>
+      <div class="ml-item"><div class="ml-dots"><div class="ml-d on"></div><div class="ml-d on"></div><div class="ml-d off"></div><div class="ml-d off"></div><div class="ml-d off"></div></div> Low</div>
+      <div class="ml-item"><div class="ml-dots"><div class="ml-d on"></div><div class="ml-d off"></div><div class="ml-d off"></div><div class="ml-d off"></div><div class="ml-d off"></div></div> Minimal</div>
+      <div class="ml-item" style="margin-left:12px;padding-left:12px;border-left:1px solid var(--border);">
+        <div class="ml-dots"><div class="ml-d hi"></div><div class="ml-d hi"></div><div class="ml-d hi"></div><div class="ml-d hi"></div><div class="ml-d hi"></div></div> Revenue impact uses pink when very high
+      </div>
+      <div class="ml-item" style="margin-left:auto;">
+        <span class="conf-badge conf-v">✓ Validated</span>&nbsp;
+        <span class="conf-badge conf-r">🔍 Research needed</span>
+      </div>
+    </div>
+
+    <div class="at-grid">
+
+      <!-- ══════════════════ ARCHETYPE 1 ══════════════════ -->
+      <div class="at-card">
+        <div class="at-head">
+          <div class="at-head-left">
+            <div class="at-num" style="color:var(--slate);">Archetype 01</div>
+            <div class="at-name">High-Volume Temp</div>
+            <div class="at-desc">Industrial · Driving · Warehouse · Hospitality · Logistics</div>
+          </div>
+          <span class="conf-badge conf-r">🔍 Research needed</span>
+        </div>
+        <div class="at-chars">
+          <span class="at-char">90–100% temp</span>
+          <span class="at-char">5–30 staff</span>
+          <span class="at-char">Bullhorn / Vincere</span>
+          <span class="at-char">High compliance burden</span>
+          <span class="at-char">Thin margins</span>
+          <span class="at-char">High staff turnover</span>
+        </div>
+        <div class="at-hook tbc">
+          <div class="at-hook-label">Sales Hook</div>
+          To be validated through primary research with agency owners
+        </div>
+        <div class="at-table-wrap">
+          <div class="at-table-label">Ranked Automation Opportunities</div>
+          <table class="at">
+            <thead><tr><th>#</th><th>Workflow</th><th class="center">Time Saved</th><th class="center">Revenue Impact</th><th class="center">Complexity</th><th>FishTank plays here</th></tr></thead>
+            <tbody>
+              <tr><td><div class="at-rank r1">1</div></td><td><div class="at-wf">Temp &amp; Contracts Ops</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Timesheet chasing, compliance doc tracking, contract generation, payroll handoff</td></tr>
+              <tr><td><div class="at-rank r2">2</div></td><td><div class="at-wf">Candidate Sourcing</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">High-volume outreach, GDPR talent pool automation, referral trigger sequences</td></tr>
+              <tr><td><div class="at-rank r3">3</div></td><td><div class="at-wf">Candidate Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Shift confirmation automation, pre-start compliance checks, worker nurture</td></tr>
+              <tr><td><div class="at-rank r4">4</div></td><td><div class="at-wf">Internal Operations</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Real-time KPI dashboards, consultant performance visibility, AI onboarding</td></tr>
+              <tr><td><div class="at-rank r5">5</div></td><td><div class="at-wf">Client Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Shift fill confirmations, client reporting, invoice chase sequences</td></tr>
+              <tr><td><div class="at-rank r6">6</div></td><td><div class="at-wf">Business Development</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Retention of existing clients matters more than new BD here</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="at-pathway">
+          <div class="at-path-step"><div class="at-path-label entry">Entry</div><div class="at-path-text">Temp ops automation audit — map timesheet &amp; compliance workflows</div></div>
+          <div class="at-path-step"><div class="at-path-label sprint">Sprint</div><div class="at-path-text">Timesheet chase + compliance expiry automation — 4–6 weeks</div></div>
+          <div class="at-path-step"><div class="at-path-label saas">SaaS</div><div class="at-path-text">Worker compliance dashboard — live expiry tracking across all workers</div></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ ARCHETYPE 2 ══════════════════ -->
+      <div class="at-card">
+        <div class="at-head">
+          <div class="at-head-left">
+            <div class="at-num" style="color:var(--slate);">Archetype 02</div>
+            <div class="at-name">Professional Services Perm</div>
+            <div class="at-desc">Finance · Legal · HR · Accountancy</div>
+          </div>
+          <span class="conf-badge conf-v">✓ Validated</span>
+        </div>
+        <div class="at-chars">
+          <span class="at-char">70–100% perm</span>
+          <span class="at-char">3–20 staff</span>
+          <span class="at-char">Bullhorn dominant</span>
+          <span class="at-char">Low compliance burden</span>
+          <span class="at-char">15–25% fees</span>
+          <span class="at-char">Relationship-led</span>
+        </div>
+        <div class="at-hook">
+          <div class="at-hook-label">Sales Hook</div>
+          "You're probably sitting on £200k of warm relationships that have gone quiet. AI doesn't forget to follow up."
+        </div>
+        <div class="at-table-wrap">
+          <div class="at-table-label">Ranked Automation Opportunities</div>
+          <table class="at">
+            <thead><tr><th>#</th><th>Workflow</th><th class="center">Time Saved</th><th class="center">Revenue Impact</th><th class="center">Complexity</th><th>FishTank plays here</th></tr></thead>
+            <tbody>
+              <tr><td><div class="at-rank r1">1</div></td><td><div class="at-wf">Business Development</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">ICP framework, Clay enrichment, Bullhorn sequences, call prep + post-call AI</td></tr>
+              <tr><td><div class="at-rank r2">2</div></td><td><div class="at-wf">Candidate Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Scheduling, AI prep packs, counter-offer playbook, pre-boarding nurture</td></tr>
+              <tr><td><div class="at-rank r3">3</div></td><td><div class="at-wf">Candidate Sourcing</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">AI Boolean, semantic search, passive outreach personalisation, CV formatting</td></tr>
+              <tr><td><div class="at-rank r4">4</div></td><td><div class="at-wf">Client Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Pipeline reporting automation, aftercare sequences, upsell signal monitoring</td></tr>
+              <tr><td><div class="at-rank r5">5</div></td><td><div class="at-wf">Internal Operations</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">KPI dashboards, AI content, prompt library, GDPR governance</td></tr>
+              <tr><td><div class="at-rank r6">6</div></td><td><div class="at-wf">Temp &amp; Contracts Ops</div></td><td><div class="stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Minimal — perm agencies don't run temp desks</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="at-pathway">
+          <div class="at-path-step"><div class="at-path-label entry">Entry</div><div class="at-path-text">BD fluency module + prompt library — immediate uplift, no friction</div></div>
+          <div class="at-path-step"><div class="at-path-label sprint">Sprint</div><div class="at-path-text">Post-call automation + Bullhorn sequences — 4–6 weeks</div></div>
+          <div class="at-path-step"><div class="at-path-label saas">SaaS</div><div class="at-path-text">BD intelligence layer — dormant client alerts, pipeline visibility</div></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ ARCHETYPE 3 ══════════════════ -->
+      <div class="at-card">
+        <div class="at-head">
+          <div class="at-head-left">
+            <div class="at-num" style="color:var(--slate);">Archetype 03</div>
+            <div class="at-name">Mixed Desk SME</div>
+            <div class="at-desc">Regional generalists · Multi-sector · Perm + contract side by side</div>
+          </div>
+          <span class="conf-badge conf-v">✓ Validated</span>
+        </div>
+        <div class="at-chars">
+          <span class="at-char">50–70% contract + perm</span>
+          <span class="at-char">10–50 staff</span>
+          <span class="at-char">Mixed stack</span>
+          <span class="at-char">Multiple desks</span>
+          <span class="at-char">No single bottleneck</span>
+          <span class="at-char">Most common UK type</span>
+        </div>
+        <div class="at-hook">
+          <div class="at-hook-label">Sales Hook</div>
+          "You're running three businesses under one roof. Right now you can't see any of them clearly."
+        </div>
+        <div class="at-table-wrap">
+          <div class="at-table-label">Ranked Automation Opportunities</div>
+          <table class="at">
+            <thead><tr><th>#</th><th>Workflow</th><th class="center">Time Saved</th><th class="center">Revenue Impact</th><th class="center">Complexity</th><th>FishTank plays here</th></tr></thead>
+            <tbody>
+              <tr><td><div class="at-rank r1">1</div></td><td><div class="at-wf">Business Development</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">ICP scoring, sequences, post-call AI — works across all desks simultaneously</td></tr>
+              <tr><td><div class="at-rank r2">2</div></td><td><div class="at-wf">Internal Operations</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Cross-desk KPI dashboard, prompt library, GDPR governance across all types</td></tr>
+              <tr><td><div class="at-rank r3">3</div></td><td><div class="at-wf">Candidate Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Scheduling, prep packs for perm desk, counter-offer playbook, contract nurture</td></tr>
+              <tr><td><div class="at-rank r4">4</div></td><td><div class="at-wf">Temp &amp; Contracts Ops</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Timesheet automation, IR35 compliance, contract generation for contract desk</td></tr>
+              <tr><td><div class="at-rank r5">5</div></td><td><div class="at-wf">Candidate Sourcing</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">AI Boolean, CV formatting, talent pool — immediate wins across all desks</td></tr>
+              <tr><td><div class="at-rank r6">6</div></td><td><div class="at-wf">Client Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Automated reporting per desk, aftercare sequences, upsell monitoring</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="at-pathway">
+          <div class="at-path-step"><div class="at-path-label entry">Entry</div><div class="at-path-text">Full team fluency programme — highest leverage in a mixed environment</div></div>
+          <div class="at-path-step"><div class="at-path-label sprint">Sprint</div><div class="at-path-text">BD first, then desk-specific ops — 6–8 weeks</div></div>
+          <div class="at-path-step"><div class="at-path-label saas">SaaS</div><div class="at-path-text">Multi-desk dashboard — unified view of all placement types</div></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ ARCHETYPE 4 ══════════════════ -->
+      <div class="at-card">
+        <div class="at-head">
+          <div class="at-head-left">
+            <div class="at-num" style="color:var(--slate);">Archetype 04</div>
+            <div class="at-name">Tech &amp; Digital Specialist</div>
+            <div class="at-desc">Software · Data · Cybersecurity · Fintech</div>
+          </div>
+          <span class="conf-badge conf-v">✓ Validated</span>
+        </div>
+        <div class="at-chars">
+          <span class="at-char">60–80% contract</span>
+          <span class="at-char">5–25 staff</span>
+          <span class="at-char">Bullhorn / Vincere</span>
+          <span class="at-char">IR35 complexity</span>
+          <span class="at-char">Narrow candidate pools</span>
+          <span class="at-char">Most competitive sector</span>
+        </div>
+        <div class="at-hook">
+          <div class="at-hook-label">Sales Hook</div>
+          "Your competitors are hitting the same 200 candidates on LinkedIn. AI finds the 2,000 they missed."
+        </div>
+        <div class="at-table-wrap">
+          <div class="at-table-label">Ranked Automation Opportunities</div>
+          <table class="at">
+            <thead><tr><th>#</th><th>Workflow</th><th class="center">Time Saved</th><th class="center">Revenue Impact</th><th class="center">Complexity</th><th>FishTank plays here</th></tr></thead>
+            <tbody>
+              <tr><td><div class="at-rank r1">1</div></td><td><div class="at-wf">Candidate Sourcing</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">AI Boolean, semantic search, passive outreach, multi-source enrichment via Clay</td></tr>
+              <tr><td><div class="at-rank r2">2</div></td><td><div class="at-wf">Business Development</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Hiring signal monitoring, tech company growth alerts, personalised BD sequences</td></tr>
+              <tr><td><div class="at-rank r3">3</div></td><td><div class="at-wf">Temp &amp; Contracts Ops</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">IR35 determination, contract automation, contractor renewal tracking</td></tr>
+              <tr><td><div class="at-rank r4">4</div></td><td><div class="at-wf">Candidate Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Interview scheduling, AI technical prep packs, contract renewal handling</td></tr>
+              <tr><td><div class="at-rank r5">5</div></td><td><div class="at-wf">Client Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Contract expiry monitoring, renewal outreach automation, client dashboards</td></tr>
+              <tr><td><div class="at-rank r6">6</div></td><td><div class="at-wf">Internal Operations</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">KPI tracking, AI thought leadership content, GDPR contractor governance</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="at-pathway">
+          <div class="at-path-step"><div class="at-path-label entry">Entry</div><div class="at-path-text">AI sourcing fluency — Boolean prompt library, semantic search training</div></div>
+          <div class="at-path-step"><div class="at-path-label sprint">Sprint</div><div class="at-path-text">Sourcing automation + BD signal monitoring — 4–6 weeks</div></div>
+          <div class="at-path-step"><div class="at-path-label saas">SaaS</div><div class="at-path-text">Tech talent intelligence — live pool monitoring, contractor renewal dashboard</div></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ ARCHETYPE 5 ══════════════════ -->
+      <div class="at-card">
+        <div class="at-head">
+          <div class="at-head-left">
+            <div class="at-num" style="color:var(--slate);">Archetype 05</div>
+            <div class="at-name">Healthcare &amp; Education</div>
+            <div class="at-desc">Nursing · Care Workers · Supply Teachers · Support Staff</div>
+          </div>
+          <span class="conf-badge conf-v">✓ Validated</span>
+        </div>
+        <div class="at-chars">
+          <span class="at-char">80–100% temp/contract</span>
+          <span class="at-char">5–40 staff</span>
+          <span class="at-char">Framework agreements</span>
+          <span class="at-char">DBS / professional reg</span>
+          <span class="at-char">24/7 operations</span>
+          <span class="at-char">Chronic candidate shortage</span>
+        </div>
+        <div class="at-hook">
+          <div class="at-hook-label">Sales Hook</div>
+          "One expired DBS and you lose the contract. Right now you're tracking that on a spreadsheet."
+        </div>
+        <div class="at-table-wrap">
+          <div class="at-table-label">Ranked Automation Opportunities</div>
+          <table class="at">
+            <thead><tr><th>#</th><th>Workflow</th><th class="center">Time Saved</th><th class="center">Revenue Impact</th><th class="center">Complexity</th><th>FishTank plays here</th></tr></thead>
+            <tbody>
+              <tr><td><div class="at-rank r1">1</div></td><td><div class="at-wf">Temp &amp; Contracts Ops</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Compliance expiry tracking, renewal alerts, DBS chase automation, shift workflows</td></tr>
+              <tr><td><div class="at-rank r2">2</div></td><td><div class="at-wf">Candidate Sourcing</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">High-volume outreach, GDPR pool automation, referral sequences, passive nurture</td></tr>
+              <tr><td><div class="at-rank r3">3</div></td><td><div class="at-wf">Candidate Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Shift booking confirmation, pre-placement compliance checks, availability management</td></tr>
+              <tr><td><div class="at-rank r4">4</div></td><td><div class="at-wf">Client Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Framework reporting automation, shift fill rate dashboards, SLA monitoring</td></tr>
+              <tr><td><div class="at-rank r5">5</div></td><td><div class="at-wf">Internal Operations</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Compliance governance framework, AI onboarding, GDPR data retention</td></tr>
+              <tr><td><div class="at-rank r6">6</div></td><td><div class="at-wf">Business Development</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Framework tender support, commissioner relationship management — lower volume</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="at-pathway">
+          <div class="at-path-step"><div class="at-path-label entry">Entry</div><div class="at-path-text">Compliance audit — map every document type and how it's tracked today</div></div>
+          <div class="at-path-step"><div class="at-path-label sprint">Sprint</div><div class="at-path-text">Compliance automation + shift confirmation workflows — 6–8 weeks</div></div>
+          <div class="at-path-step"><div class="at-path-label saas">SaaS</div><div class="at-path-text">Worker compliance dashboard — live status, zero manual tracking</div></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ ARCHETYPE 6 ══════════════════ -->
+      <div class="at-card">
+        <div class="at-head">
+          <div class="at-head-left">
+            <div class="at-num" style="color:var(--slate);">Archetype 06</div>
+            <div class="at-name">Executive Search / Retained</div>
+            <div class="at-desc">C-suite · NED · Board-level · Senior Leadership</div>
+          </div>
+          <span class="conf-badge conf-v">✓ Validated</span>
+        </div>
+        <div class="at-chars">
+          <span class="at-char">100% retained</span>
+          <span class="at-char">2–10 staff</span>
+          <span class="at-char">Low volume, high fee</span>
+          <span class="at-char">Relationship-driven</span>
+          <span class="at-char">£30–80k+ per placement</span>
+          <span class="at-char">Resistant to automation framing</span>
+        </div>
+        <div class="at-hook">
+          <div class="at-hook-label">Sales Hook</div>
+          "You charge for judgement, not research. So why are your partners spending half their week on Google?"
+        </div>
+        <div class="at-table-wrap">
+          <div class="at-table-label">Ranked Automation Opportunities</div>
+          <table class="at">
+            <thead><tr><th>#</th><th>Workflow</th><th class="center">Time Saved</th><th class="center">Revenue Impact</th><th class="center">Complexity</th><th>FishTank plays here</th></tr></thead>
+            <tbody>
+              <tr><td><div class="at-rank r1">1</div></td><td><div class="at-wf">Candidate Sourcing</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">AI market mapping, Clay long list generation, GPT candidate profiles, org mapping</td></tr>
+              <tr><td><div class="at-rank r2">2</div></td><td><div class="at-wf">Business Development</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Board appointment alerts, relationship signal monitoring, AI call prep from CRM</td></tr>
+              <tr><td><div class="at-rank r3">3</div></td><td><div class="at-wf">Client Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star hi"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Assignment progress reporting, relationship intelligence, referral trigger sequences</td></tr>
+              <tr><td><div class="at-rank r4">4</div></td><td><div class="at-wf">Internal Operations</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">AI research workflows, prompt library for market mapping, knowledge management</td></tr>
+              <tr><td><div class="at-rank r5">5</div></td><td><div class="at-wf">Candidate Management</div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div></td><td><div class="stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div></td><td class="at-ft">Interview coordination, AI briefing docs — light touch, high personalisation</td></tr>
+              <tr><td><div class="at-rank r6">6</div></td><td><div class="at-wf">Temp &amp; Contracts Ops</div></td><td><div class="na-cell" colspan="3">N/A</div><td></td><td class="at-ft">Not applicable — no temp or contract placements</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="at-pathway">
+          <div class="at-path-step"><div class="at-path-label entry">Entry</div><div class="at-path-text">Research automation — easiest sell, partners see time saved immediately</div></div>
+          <div class="at-path-step"><div class="at-path-label sprint">Sprint</div><div class="at-path-text">Market mapping automation + BD signal monitoring — 3–4 weeks</div></div>
+          <div class="at-path-step"><div class="at-path-label saas">SaaS</div><div class="at-path-text">Relationship intelligence layer — board movement alerts, assignment pipeline</div></div>
+        </div>
+      </div>
+
+    </div><!-- /at-grid -->
+  </div><!-- /mi-content -->
+  <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>Market Intelligence · March 2026</p></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
      JS ROUTING
 ═══════════════════════════════════════════ -->
 <script>
@@ -955,7 +1363,8 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0 0 28px;}
     candmgmt: 'Candidate Management',
     temp: 'Temp & Contracts Ops',
     clientmgmt: 'Client Management',
-    internalops: 'Internal Operations'
+    internalops: 'Internal Operations',
+    market: 'UK Agency Archetypes'
   };
 
   function showPage(id) {
