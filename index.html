@@ -394,48 +394,57 @@ table.at tr:hover td{background:rgba(58,134,255,0.02);}
         </div>
       </div>
 
-      <!-- WF 4: Temp & Contracts — COMING SOON -->
-      <!-- ★ ADD DEEP DIVE: Replace 'locked' with onclick="showPage('temp')" and ws-soon with ws-live when ready -->
-      <div class="wf-card locked">
+      <!-- WF 4: Temp & Contracts -->
+      <div class="wf-card" onclick="showPage('temp')">
         <div class="wf-card-top">
           <span class="wf-num">Workflow 04</span>
-          <span class="wf-status ws-soon">Coming Soon</span>
+          <span class="wf-status ws-live">● Live</span>
         </div>
         <div class="wf-card-body">
           <div class="wf-name">Temp &amp; Contracts Ops</div>
           <div class="wf-route">Compliance <span class="wf-arrow">→</span> Payroll</div>
-          <div class="wf-meta"><span class="wf-pill">6 steps</span></div>
-          <div class="wf-cta">Deep dive in progress</div>
+          <div class="wf-meta">
+            <span class="wf-pill">6 steps</span>
+            <span class="wf-pill blue">Tools mapped</span>
+            <span class="wf-pill green">AI opps</span>
+          </div>
+          <div class="wf-cta">View deep dive →</div>
         </div>
       </div>
 
-      <!-- WF 5: Client Mgmt — COMING SOON -->
-      <!-- ★ ADD DEEP DIVE: Replace 'locked' with onclick="showPage('clientmgmt')" and ws-soon with ws-live when ready -->
-      <div class="wf-card locked">
+      <!-- WF 5: Client Management -->
+      <div class="wf-card" onclick="showPage('clientmgmt')">
         <div class="wf-card-top">
           <span class="wf-num">Workflow 05</span>
-          <span class="wf-status ws-soon">Coming Soon</span>
+          <span class="wf-status ws-live">● Live</span>
         </div>
         <div class="wf-card-body">
           <div class="wf-name">Client Management</div>
           <div class="wf-route">Check Ins / Calls <span class="wf-arrow">→</span> Invoice Sent</div>
-          <div class="wf-meta"><span class="wf-pill">6 steps</span></div>
-          <div class="wf-cta">Deep dive in progress</div>
+          <div class="wf-meta">
+            <span class="wf-pill">6 steps</span>
+            <span class="wf-pill blue">Tools mapped</span>
+            <span class="wf-pill green">AI opps</span>
+          </div>
+          <div class="wf-cta">View deep dive →</div>
         </div>
       </div>
 
-      <!-- WF 6: Internal Ops — COMING SOON -->
-      <!-- ★ ADD DEEP DIVE: Replace 'locked' with onclick="showPage('internalops')" and ws-soon with ws-live when ready -->
-      <div class="wf-card locked">
+      <!-- WF 6: Internal Ops -->
+      <div class="wf-card" onclick="showPage('internalops')">
         <div class="wf-card-top">
           <span class="wf-num">Workflow 06</span>
-          <span class="wf-status ws-soon">Coming Soon</span>
+          <span class="wf-status ws-live">● Live</span>
         </div>
         <div class="wf-card-body">
           <div class="wf-name">Internal Operations</div>
           <div class="wf-route">KPIs <span class="wf-arrow">→</span> GDPR</div>
-          <div class="wf-meta"><span class="wf-pill">6 steps</span></div>
-          <div class="wf-cta">Deep dive in progress</div>
+          <div class="wf-meta">
+            <span class="wf-pill">6 steps</span>
+            <span class="wf-pill blue">Tools mapped</span>
+            <span class="wf-pill green">AI opps</span>
+          </div>
+          <div class="wf-cta">View deep dive →</div>
         </div>
       </div>
 
@@ -1028,26 +1037,512 @@ table.at tr:hover td{background:rgba(58,134,255,0.02);}
 
 
 <!-- ═══════════════════════════════════════════
-     PAGES: COMING SOON (WF 4, 5, 6)
-     ★ REPLACE THESE SECTIONS WHEN READY
+     PAGE: TEMP & CONTRACTS OPS
 ═══════════════════════════════════════════ -->
-
-<!-- ★ WORKFLOW 04 — TEMP & CONTRACTS OPS -->
 <div class="page" id="page-temp">
-  <div class="dd-hero"><div class="dd-eyebrow">Workflow 04 of 06 — Temp &amp; Contracts Operations</div><h1 class="dd-title">Deep dive <em>coming soon</em></h1></div>
-  <div class="cs-page"><div class="cs-badge">In Progress</div><div class="cs-title">Temp &amp; Contracts Ops</div><p class="cs-sub">Compliance → Payroll. This deep dive is being built. Check back soon.</p><button class="cs-btn" onclick="showPage('home')">← Back to Workflows</button></div>
+  <div class="dd-hero">
+    <div class="dd-eyebrow">Workflow 04 of 06 — Temp &amp; Contracts Operations</div>
+    <h1 class="dd-title">The most complex workflow — <em>and the most automatable</em></h1>
+    <p class="dd-sub">Compliance, timesheets, contracts, and payroll. Every step is manual, repetitive, and high-risk. This is where AI saves the most time and prevents the most costly mistakes.</p>
+    <div class="dd-stats">
+      <div class="ds"><div class="ds-num"><span>25.7m</span></div><div class="ds-label">UK temp/contract placements annually</div></div>
+      <div class="ds"><div class="ds-num"><span>120</span></div><div class="ds-label">Days some agencies wait for payment</div></div>
+      <div class="ds"><div class="ds-num"><span>IR35</span></div><div class="ds-label">Compliance failure = back-tax liability</div></div>
+      <div class="ds"><div class="ds-num"><span>AWR</span></div><div class="ds-label">12-week rule — most agencies track manually</div></div>
+    </div>
+  </div>
+  <div class="dd-content">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-b">🔧</div><div><div class="dd-sec-title">Tool Landscape</div><div class="dd-sec-sub">What UK agencies use to run their temp and contract operations</div></div></div>
+      <div class="t-wrap"><table class="tt">
+        <thead><tr><th>Tool</th><th>Category</th><th>Used For</th><th>Adoption</th><th>FishTank Angle</th></tr></thead>
+        <tbody>
+          <tr><td><div class="tn">Bullhorn</div><div class="tc tc-crm">ATS / Back-Office</div></td><td style="color:var(--slate)">Core temp system</td><td style="color:var(--slate)">Placement records, timesheet management, contract storage, compliance tracking</td><td><span class="ap ap-h">Very High</span></td><td style="color:var(--slate)">Most temp agencies run Bullhorn but use it reactively. Automation unlocks its full back-office capability.</td></tr>
+          <tr><td><div class="tn">Roubler / Bizimply</div><div class="tc tc-auto">Workforce Mgmt</div></td><td style="color:var(--slate)">Shift management</td><td style="color:var(--slate)">Shift scheduling, clock-in/out, timesheet capture, payroll integration</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Strong for high-volume shift-based agencies. FishTank can integrate these into the wider automation stack.</td></tr>
+          <tr><td><div class="tn">DocuSign / Adobe Sign</div><div class="tc tc-auto">E-Signature</div></td><td style="color:var(--slate)">Contract execution</td><td style="color:var(--slate)">Digital contract signing, audit trail, expiry tracking</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Low adoption despite high impact. Most agencies still email PDFs. Integration with Bullhorn is the sprint win.</td></tr>
+          <tr><td><div class="tn">Xero / Sage</div><div class="tc tc-data">Finance</div></td><td style="color:var(--slate)">Invoicing &amp; payroll</div><td style="color:var(--slate)">Invoice generation, VAT, margin calc, payroll processing, HMRC RTI</td><td><span class="ap ap-h">High</span></td><td style="color:var(--slate)">Bullhorn → Xero automation eliminates manual invoice creation. High ROI, low complexity to build.</td></tr>
+          <tr><td><div class="tn">Make / n8n</div><div class="tc tc-auto">Automation</div></td><td style="color:var(--slate)">Workflow glue</td><td style="color:var(--slate)">Timesheet chase sequences, compliance expiry alerts, approval escalations</td><td><span class="ap ap-l">Very Low</span></td><td style="color:var(--slate)">The engine that connects everything. Almost no temp agencies use this — it's where FishTank builds the real value.</td></tr>
+          <tr><td><div class="tn">Hireright / Credentially</div><div class="tc tc-data">Compliance</div></td><td style="color:var(--slate)">Background checking</td><td style="color:var(--slate)">DBS checks, right-to-work verification, reference checking, credential storage</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Automating the trigger for compliance checks and tracking their completion status is a significant time save.</td></tr>
+          <tr><td><div class="tn">ChatGPT / Claude</div><div class="tc tc-ai">Gen AI</div></td><td style="color:var(--slate)">Document generation</div><td style="color:var(--slate)">Contract drafting from templates, IR35 determination summaries, policy docs</td><td><span class="ap ap-l">Low</span></td><td style="color:var(--slate)">Used ad-hoc. FishTank builds the contract generation library — consistent, compliant outputs every time.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">⚡</div><div><div class="dd-sec-title">Step-by-Step AI Opportunities</div><div class="dd-sec-sub">Pain, fix, and tags at each step</div></div></div>
+      <div class="steps-grid">
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 01</div><div class="sc-name">Compliance &amp; Right to Work</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">ID checks, DBS, visa status, professional registrations — tracked manually in spreadsheets. One missed expiry is a legal and contractual crisis.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Make/n8n: automated expiry tracking with tiered alerts (30/14/7 days)</li><li>AI: auto-generate document request emails to workers when renewal due</li><li>Bullhorn: compliance status dashboard — red/amber/green per worker</li></ul>
+            <div class="risk-note">⚠ Legal exposure — one non-compliant worker on site = contract termination risk.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate alerts</span><span class="st st-r">⚠ Highest risk step</span><span class="st st-f">🐟 Governance</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 02</div><div class="sc-name">Contract Generation</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Contracts created manually from templates. IR35 determination done informally. E-signature adoption is low — still emailing PDFs.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT: auto-generate contract from placement data in Bullhorn</li><li>IR35 logic: structured determination flow built into contract workflow</li><li>DocuSign + Bullhorn: e-signature triggered automatically, completion tracked</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 DocuSign + Bullhorn</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 03</div><div class="sc-name">Placement Confirmation</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Start date, rate, and engagement details confirmed by phone or email. Not always logged in Bullhorn consistently. Client PO numbers go missing.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn Automation: placement confirmed → auto-send worker and client confirmation packs</li><li>Make: client PO received by email → extracted and logged to Bullhorn record</li><li>AI: rate card logging with margin auto-calculated and flagged if below threshold</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Bullhorn</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 04</div><div class="sc-name">Timesheet &amp; Approvals</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">The single biggest time drain in the entire workflow. Chasing workers to submit and managers to approve — every week, manually, before payroll runs.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Make: automated timesheet submission reminders (Wednesday/Thursday)</li><li>Bullhorn Automation: escalation to client contact if not approved by deadline</li><li>AI: flag anomalies before payroll — hours that look wrong vs pattern</li></ul>
+            <div class="risk-note">⚠ Late timesheets = delayed payroll = worker complaints = churn. Automation here is critical.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Highest automation value</span><span class="st st-r">⚠ Risk</span><span class="st st-f">🐟 Sprint priority</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 05</div><div class="sc-name">Invoice Generation</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Invoices raised manually from approved timesheets. Errors common. Finance team duplicating work already done in the ATS.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn → Xero: approved timesheet auto-triggers invoice generation</li><li>AI: VAT and margin calculation with exception flagging before send</li><li>Make: invoice delivered by email, delivery confirmed, status tracked in Bullhorn</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Xero + Bullhorn</span></div>
+          </div>
+        </div>
+        <div class="sc goal">
+          <div class="sc-head bg-green"><div class="sc-num">Step 06 · Goal</div><div class="sc-name">Payroll</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Worker paid accurately and on time. Errors here destroy worker trust instantly and drive churn in an already high-turnover environment.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Xero/Sage: payroll run from approved, AI-validated timesheet data</li><li>Make: HMRC RTI submission triggered automatically post-payroll</li><li>Bullhorn Automation: payslip notification sent to worker, holiday pay accrual updated</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Xero / Sage</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-g">🤖</div><div><div class="dd-sec-title">Biggest AI Opportunities</div></div></div>
+      <div class="ai-grid">
+        <div class="aic pink">
+          <div class="aic-label">Risk Elimination</div>
+          <div class="aic-title">Automated Compliance Tracking</div>
+          <div class="aic-desc">Every worker's DBS, RTW, and professional registration tracked in real time. Tiered alerts fire automatically before documents lapse — workers prompted to renew, consultants only notified when human action is needed.</div>
+          <div class="aic-saving">🛡 Eliminates the #1 legal risk in temp recruitment</div>
+        </div>
+        <div class="aic amber">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">Timesheet Chase &amp; Approval</div>
+          <div class="aic-desc">Make/n8n sends automated reminders to workers on set days, escalates to client managers if approval is outstanding, and flags anomalies before payroll runs. Consultants never chase a timesheet manually again.</div>
+          <div class="aic-saving">⏱ 3–5 hrs/consultant/week eliminated</div>
+        </div>
+        <div class="aic green">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">Bullhorn → Xero Invoice Pipeline</div>
+          <div class="aic-desc">Approved timesheet in Bullhorn triggers automatic invoice creation in Xero — with margin calculated, VAT applied, and exceptions flagged before the invoice is sent. Finance team stops re-keying data from the ATS.</div>
+          <div class="aic-saving">⏱ 1–2 hrs/day saved in finance admin</div>
+        </div>
+        <div class="aic blue">
+          <div class="aic-label">Content</div>
+          <div class="aic-title">AI Contract Generation</div>
+          <div class="aic-desc">GPT generates a compliant contract from placement data in Bullhorn — rate, duration, IR35 status, holiday pay terms — in under 60 seconds. DocuSign sends automatically. Completion status tracked back in Bullhorn.</div>
+          <div class="aic-saving">⏱ 20–30 mins saved per new placement contract</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-d">🎯</div><div><div class="dd-sec-title">Implementation Priority Order</div></div></div>
+      <table class="pt">
+        <thead><tr><th>#</th><th>What</th><th>Tools</th><th>Client Benefit</th><th>Effort</th><th>Revenue</th></tr></thead>
+        <tbody>
+          <tr><td><div class="pn p1">1</div></td><td style="font-weight:600">Timesheet chase automation</td><td style="color:var(--slate);font-size:11px">Make + Bullhorn</td><td style="color:var(--slate);font-size:11px">Kills the biggest daily time drain. Immediate consultant relief.</td><td><div class="effort"><div class="ed on"></div><div class="ed on"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p2">2</div></td><td style="font-weight:600">Compliance expiry tracking</td><td style="color:var(--slate);font-size:11px">Make + Bullhorn</td><td style="color:var(--slate);font-size:11px">Eliminates legal risk. Every agency owner wants this immediately.</td><td><div class="effort"><div class="ed on"></div><div class="ed on"></div><div class="ed on"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p3">3</div></td><td style="font-weight:600">Bullhorn → Xero invoice pipeline</td><td style="color:var(--slate);font-size:11px">Bullhorn + Xero + Make</td><td style="color:var(--slate);font-size:11px">Stops finance double-keying. Faster invoicing, faster cash.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed md"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p4">4</div></td><td style="font-weight:600">AI contract generation</td><td style="color:var(--slate);font-size:11px">GPT + DocuSign + Bullhorn</td><td style="color:var(--slate);font-size:11px">Consistent, compliant contracts in 60 seconds per placement.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p5">5</div></td><td style="font-weight:600">AWR tracking automation</td><td style="color:var(--slate);font-size:11px">Bullhorn + Make</td><td style="color:var(--slate);font-size:11px">Auto-flag workers approaching 12-week AWR threshold before it becomes a problem.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div></div></td><td><span class="rev-tag rt-p">Sprint + SaaS</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-a">⚠</div><div><div class="dd-sec-title">Watch Outs</div></div></div>
+      <div class="wo-grid">
+        <div class="woc"><div class="woc-title">IR35 — Get It Wrong and It's Expensive</div><div class="woc-desc">AI can assist with IR35 determination workflows but cannot provide legal advice. Any IR35 logic built into FishTank's automation must be validated by an employment law specialist and clearly flagged as a decision-support tool, not a determination tool.</div></div>
+        <div class="woc"><div class="woc-title">AWR 12-Week Rule</div><div class="woc-desc">Agency Workers Regulations entitle temp workers to equal pay and conditions after 12 weeks. Most agencies track this manually and miss it. Automation here prevents costly back-pay claims — but the logic must be built correctly from day one.</div></div>
+        <div class="woc"><div class="woc-title">Payroll Data Sensitivity</div><div class="woc-desc">Payroll data is among the most sensitive data a business holds. Any automation touching payroll must have robust access controls, audit trails, and GDPR data handling built in. FishTank must treat this as a compliance-first build.</div></div>
+        <div class="woc"><div class="woc-title">Cashflow Timing</div><div class="woc-desc">42% of agencies face cashflow pressure. Automation that speeds up invoicing directly improves cash position. But if automation introduces errors into invoices, it can delay payment. Every invoice pipeline needs a human review gate before go-live.</div></div>
+      </div>
+    </div>
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">🐟</div><div><div class="dd-sec-title">FishTank Commercial Opportunities</div></div></div>
+      <div class="ft-grid">
+        <div class="ftc"><div class="ftc-phase">Fluency Programme</div><div class="ftc-title">Temp Ops AI Fluency Module</div><div class="ftc-desc">Compliance governance frameworks, AI contract drafting, IR35 awareness, timesheet process design, Bullhorn back-office training.</div><div class="ftc-rev">Fluency Programme Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">Implementation Sprint</div><div class="ftc-title">Temp Ops Automation Sprint</div><div class="ftc-desc">Timesheet chase automation, compliance expiry tracking, Bullhorn → Xero pipeline, DocuSign contract workflow, AWR flag automation.</div><div class="ftc-rev">Implementation Sprint Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">SaaS (Future)</div><div class="ftc-title">Worker Compliance Dashboard</div><div class="ftc-desc">Live compliance status across every worker — DBS, RTW, AWR counter, contract status. Zero manual tracking. Licensed monthly per agency.</div><div class="ftc-rev">Monthly SaaS Licence</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>Temp &amp; Contracts Ops Deep Dive · March 2026</p></div>
 </div>
 
-<!-- ★ WORKFLOW 05 — CLIENT MANAGEMENT -->
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CLIENT MANAGEMENT
+═══════════════════════════════════════════ -->
 <div class="page" id="page-clientmgmt">
-  <div class="dd-hero"><div class="dd-eyebrow">Workflow 05 of 06 — Client Management</div><h1 class="dd-title">Deep dive <em>coming soon</em></h1></div>
-  <div class="cs-page"><div class="cs-badge">In Progress</div><div class="cs-title">Client Management</div><p class="cs-sub">Check Ins → Invoice Sent. This deep dive is being built. Check back soon.</p><button class="cs-btn" onclick="showPage('home')">← Back to Workflows</button></div>
+  <div class="dd-hero">
+    <div class="dd-eyebrow">Workflow 05 of 06 — Client Management</div>
+    <h1 class="dd-title">Where relationships are won — <em>and quietly lost</em></h1>
+    <p class="dd-sub">Most agencies are reactive with clients. AI makes them proactive — surfacing opportunities, preventing churn, and protecting placement fees before problems emerge.</p>
+    <div class="dd-stats">
+      <div class="ds"><div class="ds-num"><span>2.3×</span></div><div class="ds-label">More projects won by niche specialists</div></div>
+      <div class="ds"><div class="ds-num"><span>44%</span></div><div class="ds-label">Agencies now link fees to retention metrics</div></div>
+      <div class="ds"><div class="ds-num"><span>£0</span></div><div class="ds-label">Cost of an early leaver rebate when you have no aftercare process</div></div>
+      <div class="ds"><div class="ds-num"><span>120d</span></div><div class="ds-label">Some agencies wait this long for invoice payment</div></div>
+    </div>
+  </div>
+  <div class="dd-content">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-b">🔧</div><div><div class="dd-sec-title">Tool Landscape</div><div class="dd-sec-sub">What UK agencies use for client management</div></div></div>
+      <div class="t-wrap"><table class="tt">
+        <thead><tr><th>Tool</th><th>Category</th><th>Used For</th><th>Adoption</th><th>FishTank Angle</th></tr></thead>
+        <tbody>
+          <tr><td><div class="tn">Bullhorn CRM</div><div class="tc tc-crm">CRM</div></td><td style="color:var(--slate)">Core client record</td><td style="color:var(--slate)">Client contacts, job history, placement records, communication log, reporting</td><td><span class="ap ap-h">Very High</span></td><td style="color:var(--slate)">Most agencies use Bullhorn as a passive record — not as an active client intelligence tool. FishTank changes that.</td></tr>
+          <tr><td><div class="tn">Fathom / Gong</div><div class="tc tc-call">Call Intel</div></td><td style="color:var(--slate)">Client call recording</td><td style="color:var(--slate)">Check-in call recording, AI summary, action items → Bullhorn</td><td><span class="ap ap-l">Low</span></td><td style="color:var(--slate)">Same win as BD calls — AI notes from client check-ins, pushed to Bullhorn automatically.</td></tr>
+          <tr><td><div class="tn">Bullhorn Analytics</div><div class="tc tc-crm">Reporting</div></td><td style="color:var(--slate)">Client reporting</td><td style="color:var(--slate)">Pipeline reports, submission tracking, placement performance, SLA reporting</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Exists in Bullhorn but most agencies produce reports manually. Automation sends them on schedule with no effort.</td></tr>
+          <tr><td><div class="tn">Xero / Sage</div><div class="tc tc-data">Finance</div></td><td style="color:var(--slate)">Invoice &amp; credit control</td><td style="color:var(--slate)">Invoice delivery, payment tracking, credit control chase sequences</td><td><span class="ap ap-h">High</span></td><td style="color:var(--slate)">Automated credit control sequences — payment overdue triggers a chase sequence without consultant involvement.</td></tr>
+          <tr><td><div class="tn">ChatGPT / Claude</div><div class="tc tc-ai">Gen AI</div></td><td style="color:var(--slate)">Client comms</td><td style="color:var(--slate)">Status update drafts, market insight commentary, meeting prep from CRM data</td><td><span class="ap ap-h">High but unstructured</span></td><td style="color:var(--slate)">Ad-hoc usage. FishTank builds the client comms prompt library — consistent quality across the team.</td></tr>
+          <tr><td><div class="tn">Make / n8n</div><div class="tc tc-auto">Automation</div></td><td style="color:var(--slate)">Workflow automation</td><td style="color:var(--slate)">Check-in cadence triggers, aftercare sequences, invoice chase, NPS surveys</td><td><span class="ap ap-l">Very Low</span></td><td style="color:var(--slate)">The engine for all proactive client management. Almost no agencies use this — it's the core FishTank build layer.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">⚡</div><div><div class="dd-sec-title">Step-by-Step AI Opportunities</div></div></div>
+      <div class="steps-grid">
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 01</div><div class="sc-name">Check-ins &amp; Reviews</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Check-in calls happen reactively — when something goes wrong, not on a structured cadence. Most agencies have no system for proactive relationship management.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn Automation: scheduled check-in reminders on a set cadence per client tier</li><li>GPT: AI call prep brief from full Bullhorn history before every client call</li><li>Fathom: call recorded, summarised, action items pushed to Bullhorn automatically</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate cadence</span><span class="st st-f">🐟 Prep frameworks</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 02</div><div class="sc-name">Pipeline Reporting</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Client status reports produced manually — data pulled from Bullhorn, formatted in Word or Excel, emailed. Takes hours. Done inconsistently across the team.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn Analytics + Make: automated weekly report generated and emailed to client</li><li>GPT: AI-written market insight commentary added to each report automatically</li><li>Personalised per client tier — key accounts get richer reports, others get summary</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Fully automate</span><span class="st st-t">🔧 Bullhorn + Make</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 03</div><div class="sc-name">Feedback &amp; Disputes</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Client complaints handled reactively. No structured feedback capture. Issues escalate because no one spotted the warning signs early enough.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Make: automated NPS / satisfaction pulse sent after each placement milestone</li><li>AI sentiment analysis: flag declining satisfaction scores before they become complaints</li><li>Bullhorn: issue logged with resolution timeline — accountability created automatically</li></ul>
+            <div class="risk-note">⚠ Silent client dissatisfaction is the biggest relationship risk. AI surfaces it early.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Early warning</span><span class="st st-r">⚠ Risk</span><span class="st st-f">🐟 Playbooks</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 04</div><div class="sc-name">Upsell &amp; Expansion</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">New vacancies at existing clients are missed because no one is monitoring signals. Upsell happens by chance, not by design.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Clay + LinkedIn alerts: new job posted at existing client → consultant notified immediately</li><li>GPT: AI account brief — growth signals, hiring patterns, expansion opportunities</li><li>Bullhorn Automation: contract renewal approaching → upsell conversation triggered</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Signal monitoring</span><span class="st st-t">🔧 Clay + Bullhorn</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 05</div><div class="sc-name">Placement Aftercare</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">After a perm placement, most agencies go dark. The guarantee period runs down with no touchpoints — then a leaver triggers a rebate that was entirely avoidable.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn Automation: 1-week, 1-month, 3-month check-in sequence triggered on placement</li><li>GPT: personalised check-in message drafted for consultant to review and send</li><li>AI: flag early warning signals — candidate sentiment, client tone in emails</li></ul>
+            <div class="risk-note">⚠ Early leaver = rebate = lost fee. Aftercare sequences protect the placement and the revenue.</div>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate nurture</span><span class="st st-r">⚠ Revenue protection</span><span class="st st-f">🐟 FishTank</span></div>
+          </div>
+        </div>
+        <div class="sc goal">
+          <div class="sc-head bg-green"><div class="sc-num">Step 06 · Goal</div><div class="sc-name">Invoice Sent</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Invoice raised and payment terms activated. But without credit control automation, agencies wait months for money that should arrive in 30 days.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Xero + Make: invoice sent → automated credit control sequence if unpaid at 30/60/90 days</li><li>Bullhorn: revenue recognised, placement closed, consultant commission triggered</li><li>AI: escalation drafts at each overdue stage — professional but firm in tone</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate credit control</span><span class="st st-t">🔧 Xero + Make</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-g">🤖</div><div><div class="dd-sec-title">Biggest AI Opportunities</div></div></div>
+      <div class="ai-grid">
+        <div class="aic blue">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">Automated Client Reporting</div>
+          <div class="aic-desc">Bullhorn data + Make + GPT generates and sends a branded pipeline report to every client on a set schedule. Market insight commentary added by AI. Consultant time: zero. Client perception: significantly better service.</div>
+          <div class="aic-saving">⏱ 2–3 hrs/week saved on manual report production</div>
+        </div>
+        <div class="aic green">
+          <div class="aic-label">Intelligence</div>
+          <div class="aic-title">Upsell Signal Monitoring</div>
+          <div class="aic-desc">Clay and LinkedIn alerts flag the moment an existing client posts a new vacancy, shows growth signals, or a contact changes role. Consultants are notified before the client has even picked up the phone to call someone else.</div>
+          <div class="aic-saving">📈 Turns existing accounts into proactive revenue opportunities</div>
+        </div>
+        <div class="aic pink">
+          <div class="aic-label">Risk Reduction</div>
+          <div class="aic-title">Placement Aftercare Sequences</div>
+          <div class="aic-desc">Bullhorn Automation fires a structured sequence of check-ins after every perm placement — 1 week, 1 month, 3 months. Each message drafted by GPT, reviewed by consultant. Rebate risk drops significantly.</div>
+          <div class="aic-saving">🛡 Protects placement fees through the guarantee period</div>
+        </div>
+        <div class="aic amber">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">Credit Control Automation</div>
+          <div class="aic-desc">Xero + Make triggers a professional, escalating chase sequence when invoices go overdue. Saves the finance team hours of manual chasing and dramatically reduces debtor days — directly improving cashflow.</div>
+          <div class="aic-saving">⏱ Reduces average debtor days by 15–30 days</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-d">🎯</div><div><div class="dd-sec-title">Implementation Priority Order</div></div></div>
+      <table class="pt">
+        <thead><tr><th>#</th><th>What</th><th>Tools</th><th>Client Benefit</th><th>Effort</th><th>Revenue</th></tr></thead>
+        <tbody>
+          <tr><td><div class="pn p1">1</div></td><td style="font-weight:600">Automated client reporting</td><td style="color:var(--slate);font-size:11px">Bullhorn + Make + GPT</td><td style="color:var(--slate);font-size:11px">Immediate upgrade in client perception. Zero consultant time.</td><td><div class="effort"><div class="ed on"></div><div class="ed on"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p2">2</div></td><td style="font-weight:600">Placement aftercare sequences</td><td style="color:var(--slate);font-size:11px">Bullhorn Automation</td><td style="color:var(--slate);font-size:11px">Protects placement fees. Every agency owner feels this pain.</td><td><div class="effort"><div class="ed on"></div><div class="ed on"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p3">3</div></td><td style="font-weight:600">Credit control automation</td><td style="color:var(--slate);font-size:11px">Xero + Make</td><td style="color:var(--slate);font-size:11px">Improves cashflow directly. 42% of agencies are cashflow constrained.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed md"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p4">4</div></td><td style="font-weight:600">AI check-in prep + Fathom notes</td><td style="color:var(--slate);font-size:11px">GPT + Fathom + Bullhorn</td><td style="color:var(--slate);font-size:11px">Every client call better prepared and fully documented.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-f">Fluency</span></td></tr>
+          <tr><td><div class="pn p5">5</div></td><td style="font-weight:600">Upsell signal monitoring</td><td style="color:var(--slate);font-size:11px">Clay + LinkedIn + Bullhorn</td><td style="color:var(--slate);font-size:11px">Turns existing accounts into proactive new revenue.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div></div></td><td><span class="rev-tag rt-p">Sprint + SaaS</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-a">⚠</div><div><div class="dd-sec-title">Watch Outs</div></div></div>
+      <div class="wo-grid">
+        <div class="woc"><div class="woc-title">Automated Comms Feeling Impersonal</div><div class="woc-desc">Client relationships are built on trust. Any automated check-in or report must feel like it came from the consultant, not a system. Every automated message needs a human review gate or a personalisation layer — never fire-and-forget.</div></div>
+        <div class="woc"><div class="woc-title">Credit Control Tone</div><div class="woc-desc">Automated invoice chase sequences must be professionally calibrated. Too aggressive and you damage the relationship. Too soft and they get ignored. FishTank must design the escalation sequence carefully — and give clients the ability to pause it for sensitive accounts.</div></div>
+        <div class="woc"><div class="woc-title">Early Warning False Positives</div><div class="woc-desc">AI sentiment analysis on client emails can flag dissatisfaction that isn't there. If a consultant receives too many false alarms they'll stop acting on them. Calibration and human review of alerts is essential in the first 90 days post-implementation.</div></div>
+        <div class="woc"><div class="woc-title">Over-Reporting</div><div class="woc-desc">Automated client reports are only an improvement if they contain useful information. A report sent every week with no meaningful update is noise. FishTank must help clients design report templates that are genuinely useful — not just automating a bad process.</div></div>
+      </div>
+    </div>
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">🐟</div><div><div class="dd-sec-title">FishTank Commercial Opportunities</div></div></div>
+      <div class="ft-grid">
+        <div class="ftc"><div class="ftc-phase">Fluency Programme</div><div class="ftc-title">Client Management Fluency Module</div><div class="ftc-desc">AI client call prep, check-in communication frameworks, market insight writing with GPT, account management playbooks.</div><div class="ftc-rev">Fluency Programme Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">Implementation Sprint</div><div class="ftc-title">Client Management Sprint</div><div class="ftc-desc">Automated reporting, aftercare sequences, credit control automation, NPS surveys, upsell signal monitoring setup.</div><div class="ftc-rev">Implementation Sprint Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">SaaS (Future)</div><div class="ftc-title">Account Intelligence Dashboard</div><div class="ftc-desc">Live client health scores, upsell signals, placement aftercare status, invoice aging — all in one view. Licensed monthly.</div><div class="ftc-rev">Monthly SaaS Licence</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>Client Management Deep Dive · March 2026</p></div>
 </div>
 
-<!-- ★ WORKFLOW 06 — INTERNAL OPS -->
+
+<!-- ═══════════════════════════════════════════
+     PAGE: INTERNAL OPERATIONS
+═══════════════════════════════════════════ -->
 <div class="page" id="page-internalops">
-  <div class="dd-hero"><div class="dd-eyebrow">Workflow 06 of 06 — Internal Operations</div><h1 class="dd-title">Deep dive <em>coming soon</em></h1></div>
-  <div class="cs-page"><div class="cs-badge">In Progress</div><div class="cs-title">Internal Operations</div><p class="cs-sub">KPIs → GDPR. This deep dive is being built. Check back soon.</p><button class="cs-btn" onclick="showPage('home')">← Back to Workflows</button></div>
+  <div class="dd-hero">
+    <div class="dd-eyebrow">Workflow 06 of 06 — Internal Operations</div>
+    <h1 class="dd-title">The workflow nobody sees — <em>until it breaks</em></h1>
+    <p class="dd-sub">KPIs, team management, tech stack, finance, marketing, and compliance. This is where agency leaders spend their time instead of growing the business. AI gives it back.</p>
+    <div class="dd-stats">
+      <div class="ds"><div class="ds-num"><span>50%</span></div><div class="ds-label">Employees needing reskilling by 2025 (WEF)</div></div>
+      <div class="ds"><div class="ds-num"><span>22%</span></div><div class="ds-label">Billable time lost to admin per consultant</div></div>
+      <div class="ds"><div class="ds-num"><span>84%</span></div><div class="ds-label">Training content forgotten within 3 months without reinforcement</div></div>
+      <div class="ds"><div class="ds-num"><span>£12.9m</span></div><div class="ds-label">Average annual cost of poor data quality per business</div></div>
+    </div>
+  </div>
+  <div class="dd-content">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-b">🔧</div><div><div class="dd-sec-title">Tool Landscape</div><div class="dd-sec-sub">What UK agencies use to run their internal operations</div></div></div>
+      <div class="t-wrap"><table class="tt">
+        <thead><tr><th>Tool</th><th>Category</th><th>Used For</th><th>Adoption</th><th>FishTank Angle</th></tr></thead>
+        <tbody>
+          <tr><td><div class="tn">Bullhorn Analytics</div><div class="tc tc-crm">Reporting</div></td><td style="color:var(--slate)">KPI tracking</td><td style="color:var(--slate)">Consultant activity, revenue, GP, pipeline health, submission-to-placement ratios</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">Exists but most agencies pull KPIs manually into spreadsheets. Automation gives real-time visibility with no effort.</td></tr>
+          <tr><td><div class="tn">Xero / Sage</div><div class="tc tc-data">Finance</div></td><td style="color:var(--slate)">P&amp;L and margin</td><td style="color:var(--slate)">Revenue tracking, margin per placement, cash flow, payroll costs, forecasting</td><td><span class="ap ap-h">High</span></td><td style="color:var(--slate)">AI-assisted margin analysis and cash flow forecasting. Connecting Bullhorn + Xero gives a complete financial picture.</td></tr>
+          <tr><td><div class="tn">ChatGPT / Claude</div><div class="tc tc-ai">Gen AI</div></td><td style="color:var(--slate)">Content &amp; training</td><td style="color:var(--slate)">Job ad writing, social content, email newsletters, internal training materials</td><td><span class="ap ap-h">High but unstructured</span></td><td style="color:var(--slate)">Ad-hoc usage. FishTank builds the content production system — consistent brand voice, governed outputs.</td></tr>
+          <tr><td><div class="tn">Make / n8n</div><div class="tc tc-auto">Automation</div></td><td style="color:var(--slate)">Internal workflow</td><td style="color:var(--slate)">Consultant onboarding, KPI alert triggers, GDPR data retention, report scheduling</td><td><span class="ap ap-l">Very Low</span></td><td style="color:var(--slate)">Core FishTank build layer for internal ops. Almost no agencies have this. Every build here is net new value.</td></tr>
+          <tr><td><div class="tn">Buffer / Hootsuite</div><div class="tc tc-auto">Social Scheduling</div></td><td style="color:var(--slate)">Marketing</td><td style="color:var(--slate)">LinkedIn and social post scheduling, content calendar management</td><td><span class="ap ap-m">Medium</span></td><td style="color:var(--slate)">AI content generation + scheduling = a consistent agency brand presence with minimal consultant time.</td></tr>
+          <tr><td><div class="tn">Notion / Confluence</div><div class="tc tc-ai">Knowledge Mgmt</div></td><td style="color:var(--slate)">Processes &amp; playbooks</td><td style="color:var(--slate)">SOP documentation, onboarding materials, prompt libraries, governance policies</td><td><span class="ap ap-l">Low</span></td><td style="color:var(--slate)">FishTank's AI governance framework and prompt library lives here. Building this is a core deliverable of the fluency programme.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">⚡</div><div><div class="dd-sec-title">Step-by-Step AI Opportunities</div></div></div>
+      <div class="steps-grid">
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 01</div><div class="sc-name">KPI Tracking &amp; Reporting</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">KPIs pulled manually from Bullhorn into spreadsheets weekly. Managers spend Friday afternoons on this instead of coaching their teams.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn Analytics + Make: real-time KPI dashboard, auto-updated, zero manual extraction</li><li>AI forecasting: revenue and GP projections based on current pipeline data</li><li>Automated weekly performance summary emailed to MD every Monday morning</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Fully automate</span><span class="st st-t">🔧 Bullhorn + Make</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 02</div><div class="sc-name">Team Management &amp; L&amp;D</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Consultant onboarding is inconsistent. Training happens once and is forgotten. AI fluency skills aren't being built or reinforced systematically.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>FishTank fluency programme: structured AI training with reinforcement built in</li><li>Make: onboarding checklist automation — tasks assigned, completion tracked</li><li>GPT: AI-assisted performance review prep — consultant activity data turned into structured feedback</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Systematic training</span><span class="st st-f">🐟 Core FT product</span></div>
+          </div>
+        </div>
+        <div class="sc risk">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 03</div><div class="sc-name">Tech Stack Management</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Agencies pay for tools they don't use. AI features sit unused in platforms they already own. Tool sprawl is real and expensive.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>FishTank audit: map every tool, its cost, and its actual usage level</li><li>AI adoption tracking: which Bullhorn features are being used vs paid for</li><li>Consolidation recommendations: tools to cancel, tools to activate, gaps to fill</li></ul>
+            <div class="risk-note">⚠ Most agencies pay for 30–50% more tech than they actually use. FishTank's audit finds the waste immediately.</div>
+            <div class="sc-tags"><span class="st st-f">🐟 FT Audit</span><span class="st st-r">⚠ Cost risk</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 04</div><div class="sc-name">Finance &amp; Margin Management</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Margin per placement tracked inconsistently. Cash flow forecasting done in spreadsheets or not at all. MDs flying blind on their real financial position.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Bullhorn + Xero: automated margin calculation per placement, flagged if below threshold</li><li>AI forecasting: cash flow projection based on outstanding invoices + pipeline</li><li>Make: weekly P&amp;L summary auto-generated and delivered to MD</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate</span><span class="st st-t">🔧 Bullhorn + Xero</span></div>
+          </div>
+        </div>
+        <div class="sc">
+          <div class="sc-head bg-deep"><div class="sc-num">Step 05</div><div class="sc-name">Marketing &amp; Brand</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">Most agencies have no consistent content output. Job ads are written from scratch each time. LinkedIn presence is sporadic. Brand is an afterthought.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>GPT: job ad generation from job spec in 60 seconds — consistent, bias-checked</li><li>AI content pipeline: weekly LinkedIn posts drafted from market data + agency news</li><li>Buffer + Make: content scheduled and posted automatically on set cadence</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Content pipeline</span><span class="st st-f">🐟 FishTank templates</span></div>
+          </div>
+        </div>
+        <div class="sc goal">
+          <div class="sc-head bg-green"><div class="sc-num">Step 06 · Goal</div><div class="sc-name">GDPR &amp; Data Governance</div></div>
+          <div class="sc-body">
+            <p class="sc-desc">GDPR compliance is assumed rather than managed. Data retention policies exist on paper but aren't enforced. AI usage has no governance framework.</p>
+            <div class="sc-label">AI Fix</div>
+            <ul class="sc-list"><li>Make: automated data retention — records flagged and deleted at policy threshold</li><li>FishTank: AI governance policy — what data consultants can use with AI tools</li><li>Bullhorn: consent management dashboard — candidate data status always visible</li></ul>
+            <div class="sc-tags"><span class="st st-a">⚡ Automate retention</span><span class="st st-f">🐟 Governance framework</span><span class="st st-t">🔧 Bullhorn</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-g">🤖</div><div><div class="dd-sec-title">Biggest AI Opportunities</div></div></div>
+      <div class="ai-grid">
+        <div class="aic blue">
+          <div class="aic-label">Intelligence</div>
+          <div class="aic-title">Real-Time KPI Dashboard</div>
+          <div class="aic-desc">Bullhorn Analytics + Make delivers a live performance dashboard to every MD — consultant activity, GP, pipeline health, submission ratios — auto-updated, no manual extraction. MD time freed from admin, redirected to coaching.</div>
+          <div class="aic-saving">⏱ 3–5 hrs/week saved on manual reporting for MDs</div>
+        </div>
+        <div class="aic pink">
+          <div class="aic-label">Core Product</div>
+          <div class="aic-title">AI Fluency Programme (FishTank)</div>
+          <div class="aic-desc">Structured training across the whole team — prompt libraries, workflow integration, governance frameworks, reinforcement mechanisms. This is FishTank's core product delivered into the internal ops workflow. The highest-leverage intervention in the entire platform.</div>
+          <div class="aic-saving">📈 Multiplies output of every consultant in the business</div>
+        </div>
+        <div class="aic amber">
+          <div class="aic-label">Automation</div>
+          <div class="aic-title">AI Content Production Pipeline</div>
+          <div class="aic-desc">GPT generates job ads, LinkedIn posts, email newsletters, and candidate marketing content from templates and briefs. Buffer schedules everything. The agency gets a consistent brand presence for the first time — with minimal consultant input.</div>
+          <div class="aic-saving">⏱ 5–8 hrs/week saved on content creation</div>
+        </div>
+        <div class="aic green">
+          <div class="aic-label">Compliance</div>
+          <div class="aic-title">GDPR &amp; AI Governance Framework</div>
+          <div class="aic-desc">FishTank builds the data governance policy, AI usage policy, and automated data retention workflows into the agency's operations. Protects the business legally and unlocks confident use of AI tools across the team.</div>
+          <div class="aic-saving">🛡 Compliance infrastructure that enables AI adoption</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-d">🎯</div><div><div class="dd-sec-title">Implementation Priority Order</div></div></div>
+      <table class="pt">
+        <thead><tr><th>#</th><th>What</th><th>Tools</th><th>Client Benefit</th><th>Effort</th><th>Revenue</th></tr></thead>
+        <tbody>
+          <tr><td><div class="pn p1">1</div></td><td style="font-weight:600">AI fluency programme</td><td style="color:var(--slate);font-size:11px">FishTank</td><td style="color:var(--slate);font-size:11px">Multiplies output of every consultant. Core FT product.</td><td><div class="effort"><div class="ed on"></div><div class="ed on"></div><div class="ed on"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-f">Fluency</span></td></tr>
+          <tr><td><div class="pn p2">2</div></td><td style="font-weight:600">Tech stack audit</td><td style="color:var(--slate);font-size:11px">FishTank audit</td><td style="color:var(--slate);font-size:11px">Finds cost waste immediately. High perceived value, fast win.</td><td><div class="effort"><div class="ed on"></div><div class="ed"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-f">Fluency</span></td></tr>
+          <tr><td><div class="pn p3">3</div></td><td style="font-weight:600">KPI dashboard automation</td><td style="color:var(--slate);font-size:11px">Bullhorn + Make</td><td style="color:var(--slate);font-size:11px">Real-time visibility for the MD. Replaces Friday afternoon spreadsheet work.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed md"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p4">4</div></td><td style="font-weight:600">AI content pipeline</td><td style="color:var(--slate);font-size:11px">GPT + Buffer + Make</td><td style="color:var(--slate);font-size:11px">Consistent brand presence with minimal consultant time.</td><td><div class="effort"><div class="ed md"></div><div class="ed md"></div><div class="ed"></div><div class="ed"></div></div></td><td><span class="rev-tag rt-s">Sprint</span></td></tr>
+          <tr><td><div class="pn p5">5</div></td><td style="font-weight:600">GDPR + AI governance</td><td style="color:var(--slate);font-size:11px">FishTank + Make + Bullhorn</td><td style="color:var(--slate);font-size:11px">Legal protection and the foundation for everything else FishTank builds.</td><td><div class="effort"><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div><div class="ed hi"></div></div></td><td><span class="rev-tag rt-p">Sprint + SaaS</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="div">
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-a">⚠</div><div><div class="dd-sec-title">Watch Outs</div></div></div>
+      <div class="wo-grid">
+        <div class="woc"><div class="woc-title">AI Governance Before AI Adoption</div><div class="woc-desc">Agencies that adopt AI tools without a governance framework create risk — consultants using ChatGPT with candidate data, outputs that aren't checked, confidential information shared with third-party tools. FishTank must build governance first, then accelerate adoption on top of it.</div></div>
+        <div class="woc"><div class="woc-title">KPI Gaming</div><div class="woc-desc">Real-time KPI visibility can change behaviour in the wrong direction — consultants optimising for the metrics being tracked rather than the outcomes that matter. FishTank must help clients design the right KPI set, not just automate the reporting of whatever they already track.</div></div>
+        <div class="woc"><div class="woc-title">Content Quality Control</div><div class="woc-desc">AI-generated job ads and social content must be reviewed before publishing. A job ad with a hallucinated salary range or biased language damages the agency's brand and creates legal exposure. Human review gates are non-negotiable in the content pipeline.</div></div>
+        <div class="woc"><div class="woc-title">Training Without Reinforcement</div><div class="woc-desc">84% of training content is forgotten within 3 months without reinforcement. FishTank's fluency programme must include ongoing reinforcement mechanisms — prompt library updates, team challenges, usage tracking — not a one-time workshop and a certificate.</div></div>
+      </div>
+    </div>
+
+    <div class="dd-section">
+      <div class="dd-sec-head"><div class="dd-sec-icon si-p">🐟</div><div><div class="dd-sec-title">FishTank Commercial Opportunities</div></div></div>
+      <div class="ft-grid">
+        <div class="ftc"><div class="ftc-phase">Fluency Programme</div><div class="ftc-title">Full AI Fluency Programme</div><div class="ftc-desc">The core FishTank product — structured AI training, prompt library, governance framework, and reinforcement system. Internal ops is where the fluency programme lives and is governed.</div><div class="ftc-rev">Fluency Programme Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">Implementation Sprint</div><div class="ftc-title">Internal Ops Sprint</div><div class="ftc-desc">KPI dashboard build, AI content pipeline, GDPR automation, tech stack audit and rationalisation, onboarding automation, Bullhorn + Xero financial reporting.</div><div class="ftc-rev">Implementation Sprint Fee</div></div>
+        <div class="ftc"><div class="ftc-phase">SaaS (Future)</div><div class="ftc-title">Agency Intelligence OS</div><div class="ftc-desc">The full FishTank SaaS layer — KPIs, compliance, pipeline, content, and team performance in one dashboard. This is the end state for every client. Licensed monthly per agency.</div><div class="ftc-rev">Monthly SaaS Licence</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer"><p>FishTank Group Ltd · fishtank.world</p><p>Internal Operations Deep Dive · March 2026</p></div>
 </div>
 
 
